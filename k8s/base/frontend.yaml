@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: youcode-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: youcode-frontend
+  template:
+    metadata:
+      labels:
+        app: youcode-frontend
+    spec:
+      containers:
+      - name: youcode-frontend
+        image: youcode-frontend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NEXT_PUBLIC_API_URL
+          value: "http://youcode-backend:8081/api"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: youcode-frontend
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: youcode-frontend

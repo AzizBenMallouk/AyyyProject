@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: youcode-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: youcode-backend
+  template:
+    metadata:
+      labels:
+        app: youcode-backend
+    spec:
+      containers:
+      - name: youcode-backend
+        image: youcode-backend:latest
+        ports:
+        - containerPort: 8081
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            secretKeyRef:
+              name: youcode-secrets
+              key: db-url
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: youcode-secrets
+              key: db-username
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: youcode-secrets
+              key: db-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: youcode-backend
+spec:
+  ports:
+  - port: 8081
+    targetPort: 8081
+  selector:
+    app: youcode-backend

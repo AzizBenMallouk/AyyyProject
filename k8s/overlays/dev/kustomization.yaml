@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+namespace: youcode-dev
+nameSuffix: -dev
+commonLabels:
+  env: dev
+patchesStrategicMerge:
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: youcode-backend
+  spec:
+    replicas: 1
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: youcode-frontend
+  spec:
+    replicas: 1

@@ -1,9 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-- ../../base
-namespace: youcode-prod
-nameSuffix: -blue
-commonLabels:
-  env: prod
-  color: blue

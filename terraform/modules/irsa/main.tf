@@ -1,0 +1,55 @@
+###############################################################################
+# Module: IRSA (IAM Roles for Service Accounts)
+# Generic reusable module. Call once per service account that needs AWS access.
+###############################################################################
+
+data "aws_iam_policy_document" "assume_role" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+
+    principals {
+      type        = "Federated"
+      identifiers = [var.oidc_provider_arn]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "${var.oidc_issuer_url}:sub"
+      values   = ["system:serviceaccount:${var.namespace}:${var.service_account_name}"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "${var.oidc_issuer_url}:aud"
+      values   = ["sts.amazonaws.com"]
+    }
+  }
+}
+
+resource "aws_iam_role" "irsa" {
+  name               = var.role_name
+  assume_role_policy = data.aws_iam_policy_document.assume_role.json
+
+  tags = {
+    ManagedBy      = "terraform"
+    Project        = var.project_name
+    ServiceAccount = var.service_account_name
+    Namespace      = var.namespace
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "irsa" {
+  for_each = toset(var.policy_arns)
+
+  role       = aws_iam_role.irsa.name
+  policy_arn = each.value
+}
+
+resource "aws_iam_role_policy" "inline" {
+  count = var.inline_policy_json != "" ? 1 : 0
+
+  name   = "${var.role_name}-inline"
+  role   = aws_iam_role.irsa.id
+  policy = var.inline_policy_json
+}

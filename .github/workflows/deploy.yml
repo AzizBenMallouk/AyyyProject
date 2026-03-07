@@ -1,0 +1,66 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'app-backend/**'
+      - 'app-frontend/**'
+      - 'gitops/**'
+      - '.github/workflows/deploy.yml'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push Frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./app-frontend
+          push: true
+          tags: ${{ steps.login-ecr.outputs.registry }}/app-frontend-prod:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push Backend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./app-backend
+          push: true
+          tags: ${{ steps.login-ecr.outputs.registry }}/app-backend-prod:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Update GitOps Kustomization
+        run: |
+          cd gitops/overlays/prod
+          kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/app-frontend-prod=${{ steps.login-ecr.outputs.registry }}/app-frontend-prod:${{ github.sha }}
+          kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/app-backend-prod=${{ steps.login-ecr.outputs.registry }}/app-backend-prod:${{ github.sha }}
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add gitops/overlays/prod/kustomization.yaml
+          git commit -m "chore: update image tags to ${{ github.sha }} [skip ci]"
+          git push

@@ -1,0 +1,56 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: youcode-backend
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: youcode-backend
+  template:
+    metadata:
+      labels:
+        app: youcode-backend
+    spec:
+      serviceAccountName: youcode-backend
+      containers:
+      - name: backend
+        image: 1234567890.dkr.ecr.us-east-1.amazonaws.com/app-backend-prod:latest # Replace with actual URL
+        ports:
+        - containerPort: 8082
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:mysql://localhost:3306/app_db?useSSL=false"
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "root"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "root"
+        - name: AWS_S3_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              name: backend-config
+              key: s3_bucket_name
+  strategy:
+    blueGreen:
+      activeService: youcode-backend
+      previewService: youcode-backend-preview
+      autoPromotionEnabled: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: youcode-backend
+spec:
+  ports:
+  - port: 8082
+    targetPort: 8082
+  selector:
+    app: youcode-backend
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: youcode-backend
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::1234567890:role/prod-eks-cluster-backend-s3 # Replace with actual ARN

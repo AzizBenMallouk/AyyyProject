@@ -315,14 +315,14 @@ export default function RoleManagementPage() {
                                         <div className="space-y-3 pt-2">
                                             <h3 className="text-sm font-medium text-white flex justify-between items-center">
                                                 Permissions
-                                                <span className="text-xs font-normal text-muted-foreground">{formData.permissions.length} selected</span>
+                                                <span className="text-xs font-normal text-muted-foreground">{(formData.permissions || []).length} selected</span>
                                             </h3>
                                             <div className="grid grid-cols-2 gap-2">
                                                 {permissions.length === 0 ? (
                                                     <p className="col-span-2 text-sm text-muted-foreground italic">No permissions available in system.</p>
                                                 ) : (
                                                     permissions.map((perm) => {
-                                                        const isActive = formData.permissions.includes(perm);
+                                                        const isActive = formData.permissions?.includes(perm) || false;
                                                         return (
                                                             <div
                                                                 key={perm}

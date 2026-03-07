@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createProgram } from "@/lib/program-api";
+import { getAllPromotions } from "@/lib/admin-api";
+import { Promotion } from "@/types/admin";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Loader2, X, Plus } from "lucide-react";
@@ -16,18 +18,33 @@ interface CreateProgramDialogProps {
 
 export default function CreateProgramDialog({ isOpen, onClose, onSuccess }: CreateProgramDialogProps) {
     const [isSaving, setIsSaving] = useState(false);
+    const [promotions, setPromotions] = useState<Promotion[]>([]);
     const [formData, setFormData] = useState({
         title: "",
         description: "",
-        speciality: ""
+        speciality: "",
+        groupId: ""
     });
+
+    useEffect(() => {
+        const fetchPromotions = async () => {
+            try {
+                const data = await getAllPromotions();
+                setPromotions(data);
+                if (data.length > 0) setFormData(prev => ({ ...prev, groupId: data[0].id.toString() }));
+            } catch (error) {
+                console.error("Failed to fetch promotions", error);
+            }
+        };
+        if (isOpen) fetchPromotions();
+    }, [isOpen]);
 
     const handleSave = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSaving(true);
         try {
             await createProgram(formData);
-            setFormData({ title: "", description: "", speciality: "" });
+            setFormData({ title: "", description: "", speciality: "", groupId: promotions[0]?.id.toString() || "" });
             onSuccess();
             onClose();
         } catch (error) {
@@ -86,6 +103,20 @@ export default function CreateProgramDialog({ isOpen, onClose, onSuccess }: Crea
                                         className="bg-white/5 border-white/10 text-white"
                                         placeholder="e.g. Java/Angular"
                                     />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs font-medium text-slate-300">Promotion / Group *</label>
+                                    <select
+                                        required
+                                        value={formData.groupId}
+                                        onChange={(e) => setFormData({ ...formData, groupId: e.target.value })}
+                                        className="w-full bg-white/5 border border-white/10 rounded-md p-2 text-white focus:outline-none focus:ring-1 focus:ring-primary h-10 px-3 py-2 text-sm"
+                                    >
+                                        <option value="" disabled>Select a promotion</option>
+                                        {promotions.map((p) => (
+                                            <option key={p.id} value={p.id.toString()}>{p.name}</option>
+                                        ))}
+                                    </select>
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-xs font-medium text-slate-300">Description</label>

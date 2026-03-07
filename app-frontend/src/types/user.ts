@@ -17,6 +17,10 @@ export interface User {
     statusName?: string;
     statusId?: number;
     roleNames: string[];
+    profileImage?: string;
+    address?: string;
+    birthDate?: string;
+    gender?: string;
     createdAt: string;
     updatedAt: string;
 }
@@ -28,6 +32,14 @@ export interface CreateUserRequest {
     firstName: string;
     lastName: string;
     roleNames: string[];
+    campusId?: number;
+    promotionId?: number;
+    gradeId?: number;
+    phone?: string;
+    address?: string;
+    birthDate?: string;
+    cin?: string;
+    gender?: string;
 }
 
 export interface UserResponse {

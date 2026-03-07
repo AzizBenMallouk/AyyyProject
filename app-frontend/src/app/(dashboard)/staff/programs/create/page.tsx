@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createProgram, Sprint } from "@/lib/program-api";
+import { getAllPromotions } from "@/lib/admin-api";
+import { Promotion } from "@/types/admin";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,14 +18,29 @@ import { Badge } from "@/components/ui/badge";
 export default function CreateProgramPage() {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
+    const [promotions, setPromotions] = useState<Promotion[]>([]);
 
     // Program State
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [speciality, setSpeciality] = useState("");
+    const [groupId, setGroupId] = useState("");
 
     // Sprints State
     const [sprints, setSprints] = useState<Partial<Sprint>[]>([]);
+
+    useEffect(() => {
+        const fetchPromotions = async () => {
+            try {
+                const data = await getAllPromotions();
+                setPromotions(data);
+                if (data.length > 0) setGroupId(data[0].id.toString());
+            } catch (error) {
+                console.error("Failed to fetch promotions", error);
+            }
+        };
+        fetchPromotions();
+    }, []);
 
     const addSprint = () => {
         setSprints([
@@ -58,6 +75,7 @@ export default function CreateProgramPage() {
                 title,
                 description,
                 speciality,
+                groupId,
                 sprints: sprints as Sprint[] // Type assertion, backend will handle ID assignment
             });
             router.push('/staff/programs');
@@ -127,6 +145,21 @@ export default function CreateProgramPage() {
                                     placeholder="e.g. Software Development"
                                     className="bg-black/20 border-white/10"
                                 />
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="groupId">Promotion / Group</Label>
+                                <select
+                                    id="groupId"
+                                    value={groupId}
+                                    onChange={(e) => setGroupId(e.target.value)}
+                                    className="w-full bg-black/20 border border-white/10 rounded-md p-2 text-white focus:outline-none focus:ring-1 focus:ring-primary h-10 px-3 py-2 text-sm"
+                                >
+                                    <option value="" disabled>Select a promotion</option>
+                                    {promotions.map((p) => (
+                                        <option key={p.id} value={p.id.toString()}>{p.name}</option>
+                                    ))}
+                                </select>
                             </div>
 
                             <div className="space-y-2">

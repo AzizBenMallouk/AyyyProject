@@ -3,21 +3,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import EditorJS, { OutputData } from "@editorjs/editorjs";
 import { cn } from "@/lib/utils";
-// @ts-expect-error EditorJS plugins lack types
 import Header from "@editorjs/header";
-// @ts-expect-error EditorJS plugins lack types
 import List from "@editorjs/list";
-// @ts-expect-error EditorJS plugins lack types
 import Checklist from "@editorjs/checklist";
-// @ts-expect-error EditorJS plugins lack types
 import Code from "@editorjs/code";
-// @ts-expect-error EditorJS plugins lack types
 import Quote from "@editorjs/quote";
-// @ts-expect-error EditorJS plugins lack types
 import Table from "@editorjs/table";
-// @ts-expect-error EditorJS plugins lack types
 import Delimiter from "@editorjs/delimiter";
-// @ts-expect-error EditorJS plugins lack types
 import Warning from "@editorjs/warning";
 
 interface EditorProps {

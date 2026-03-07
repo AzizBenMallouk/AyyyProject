@@ -61,7 +61,7 @@ export default function ProfilePage() {
 
             <ProfileHeader user={isAdminView ? staffUser : studentUser} />
 
-            {isAdminView ? <StaffProfile /> : <StudentProfile />}
+            {isAdminView ? <StaffProfile /> : <StudentProfile studentId={1} />}
         </div>
     );
 }

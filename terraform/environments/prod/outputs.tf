@@ -29,3 +29,8 @@ output "backend_s3_role_arn" {
 output "oidc_provider_arn" {
   value = module.eks.oidc_provider_arn
 }
+
+output "github_actions_role_arn" {
+  value       = module.github_oidc_role.iam_role_arn
+  description = "The ARN of the IAM role for GitHub Actions"
+}

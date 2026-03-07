@@ -104,7 +104,7 @@ export default function NewClassroomPage() {
 
         try {
             const token = localStorage.getItem('token');
-            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api';
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8082/api';
             const response = await fetch(`${apiUrl}/files/upload`, {
                 method: 'POST',
                 headers: {

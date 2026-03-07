@@ -1,6 +1,6 @@
 import { Activity, ActivityComment } from "@/types/classroom";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8082/api';
 
 const getAuthHeader = () => {
     const token = localStorage.getItem('token');

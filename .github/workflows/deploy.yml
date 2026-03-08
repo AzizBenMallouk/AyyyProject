@@ -54,7 +54,7 @@ jobs:
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
-    environment: production
+    # environment: production
     permissions:
       id-token: write
       contents: write

@@ -38,7 +38,9 @@ jobs:
         with:
           context: ./app-frontend
           push: true
-          tags: ${{ steps.login-ecr.outputs.registry }}/app-frontend-prod:${{ github.sha }}
+          tags: |
+            ${{ steps.login-ecr.outputs.registry }}/app-frontend-prod:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/app-frontend-prod:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -47,7 +49,9 @@ jobs:
         with:
           context: ./app-backend
           push: true
-          tags: ${{ steps.login-ecr.outputs.registry }}/app-backend-prod:${{ github.sha }}
+          tags: |
+            ${{ steps.login-ecr.outputs.registry }}/app-backend-prod:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/app-backend-prod:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 

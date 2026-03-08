@@ -26,4 +26,18 @@ module "eks" {
 
   # IRSA
   enable_irsa = true
+
+  cluster_addons = {
+    kube-proxy = {}
+    vpc-cni = {
+      resolve_conflicts = "OVERWRITE"
+      configuration_values = jsonencode({
+        env = {
+          ENABLE_PREFIX_DELEGATION = "true"
+          WARM_PREFIX_TARGET       = "1"
+        }
+      })
+    }
+    coredns = {}
+  }
 }

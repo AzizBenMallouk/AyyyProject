@@ -5,7 +5,7 @@ resources:
   - ../../base
 
 images:
-  - name: 1234567890.dkr.ecr.us-east-1.amazonaws.com/app-frontend-prod
+  - name: 323928186444.dkr.ecr.us-east-1.amazonaws.com/app-frontend-prod
     newTag: latest
-  - name: 1234567890.dkr.ecr.us-east-1.amazonaws.com/app-backend-prod
+  - name: 323928186444.dkr.ecr.us-east-1.amazonaws.com/app-backend-prod
     newTag: latest

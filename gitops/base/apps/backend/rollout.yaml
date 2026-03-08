@@ -20,7 +20,7 @@ spec:
       serviceAccountName: youcode-backend
       containers:
       - name: backend
-        image: 1234567890.dkr.ecr.us-east-1.amazonaws.com/app-backend-prod:latest # Replace with actual URL
+        image: 323928186444.dkr.ecr.us-east-1.amazonaws.com/app-backend-prod:latest
         ports:
         - containerPort: 8082
         env:

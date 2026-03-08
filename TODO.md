@@ -1,0 +1,4 @@
+- GitOps Build & Push
+- Manual Approve
+- Green/Blue Deployment
+- Monitoring

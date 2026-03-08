@@ -5,3 +5,4 @@ resources:
   - apps/backend/rollout.yaml
   - apps/frontend/rollout.yaml
   - networking/ingress.yaml
+  - monitoring/monitoring.yaml

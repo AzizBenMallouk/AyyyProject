@@ -68,4 +68,4 @@ kind: ServiceAccount
 metadata:
   name: youcode-backend
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::1234567890:role/prod-eks-cluster-backend-s3 # Replace with actual ARN
+    eks.amazonaws.com/role-arn: arn:aws:iam::323928186444:role/prod-eks-cluster-backend-s3

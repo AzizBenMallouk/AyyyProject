@@ -6,12 +6,12 @@ module "vpc" {
   name = "${var.cluster_name}-vpc"
   cidr = var.vpc_cidr
 
-  azs             = slice(data.aws_availability_zones.available.names, 0, 3)
+  azs             = data.aws_availability_zones.available.names
   private_subnets = var.private_subnets
   public_subnets  = var.public_subnets
 
   enable_nat_gateway = true
-  single_nat_gateway = true # For cost saving in prod if not strict HA
+  single_nat_gateway = true
 
   public_subnet_tags = {
     "kubernetes.io/role/elb" = 1
@@ -22,3 +22,5 @@ module "vpc" {
     "kubernetes.io/role/internal-elb" = 1
   }
 }
+
+data "aws_availability_zones" "available" {}

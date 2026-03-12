@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   description: "Advanced Learning Management System for Developers",
 };
 
+// fake update
 export default function RootLayout({
   children,
 }: Readonly<{

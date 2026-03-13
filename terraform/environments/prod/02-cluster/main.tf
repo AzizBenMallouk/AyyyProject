@@ -15,7 +15,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     main = {
-      min_size     = 2
+      min_size     = 0
       max_size     = 5
       desired_size = 3
 
@@ -25,7 +25,7 @@ module "eks" {
     }
   }
 
-  enable_irsa = true
+  enable_irsa                   = false
 
   cluster_addons = {
     kube-proxy = {}
@@ -49,6 +49,13 @@ resource "aws_iam_openid_connect_provider" "github" {
   url = "https://token.actions.githubusercontent.com"
   client_id_list = ["sts.amazonaws.com"]
   thumbprint_list = ["6938fd4d98bab03faadb97b34396831e3780aea1"]
+}
+
+# EKS OIDC Provider (Bypass network check for thumbprint)
+resource "aws_iam_openid_connect_provider" "eks" {
+  client_id_list  = ["sts.amazonaws.com"]
+  thumbprint_list = ["9e99a48a9960b14926bb7f3b02e22da2b0ab7280"] # Amazon Root CA thumbprint
+  url             = module.eks.cluster_oidc_issuer_url
 }
 
 module "github_oidc_role" {

@@ -11,19 +11,15 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: api.youcode.com
-      http:
+    - http:
         paths:
-          - path: /
+          - path: /api
             pathType: Prefix
             backend:
               service:
                 name: youcode-backend
                 port:
                   number: 8082
-    - host: app.youcode.com
-      http:
-        paths:
           - path: /
             pathType: Prefix
             backend:

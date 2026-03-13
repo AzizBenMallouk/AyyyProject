@@ -4,7 +4,7 @@ metadata:
   name: youcode-backend
   namespace: default
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: youcode-backend

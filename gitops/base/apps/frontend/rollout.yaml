@@ -4,7 +4,7 @@ metadata:
   name: youcode-frontend
   namespace: default
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: youcode-frontend
@@ -23,7 +23,7 @@ spec:
         - containerPort: 3000
         env:
         - name: NEXT_PUBLIC_API_URL
-          value: "http://api.youcode.com/api" # Replace with actual domain
+          value: "/api"
   strategy:
     blueGreen:
       activeService: youcode-frontend

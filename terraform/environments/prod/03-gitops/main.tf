@@ -13,6 +13,26 @@ resource "helm_release" "argocd" {
     value = "LoadBalancer"
   }
 
+  set {
+    name  = "server.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"
+    value = "external"
+  }
+
+  set {
+    name  = "server.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-nlb-target-type"
+    value = "ip"
+  }
+
+  set {
+    name  = "server.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-scheme"
+    value = "internet-facing"
+  }
+
+  set {
+    name  = "server.extraArgs"
+    value = "{--insecure}"
+  }
+
   timeout = 600
   wait    = true
 }

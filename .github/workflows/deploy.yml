@@ -94,35 +94,36 @@ jobs:
           git add gitops/overlays/prod/kustomization.yaml
           git commit -m "chore: update image tags to ${{ github.sha }} [skip ci]"
           git push
-
-  promote:
-    needs: deploy
-    runs-on: ubuntu-latest
-    # environment: production
-    permissions:
-      id-token: write
-      contents: read
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Install kubectl argo rollouts plugin
-        run: |
-          curl -LO https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-linux-amd64
-          chmod +x ./kubectl-argo-rollouts-linux-amd64
-          sudo mv ./kubectl-argo-rollouts-linux-amd64 /usr/local/bin/kubectl-argo-rollouts
-
-      - name: Update kubeconfig
-        run: aws eks update-kubeconfig --name ${{ secrets.CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
-
-      - name: Promote Backend
-        run: kubectl argo rollouts promote youcode-backend
-
-      - name: Promote Frontend
-        run: kubectl argo rollouts promote youcode-frontend
+#
+#  promote:
+#    needs: deploy
+#    runs-on: ubuntu-latest
+#    # environment: production
+#    permissions:
+#      id-token: write
+#      contents: read
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v4
+#        with:
+#          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+#          aws-region: ${{ secrets.AWS_REGION }}
+#
+#      - name: Install kubectl argo rollouts plugin
+#        run: |
+#          curl -LO https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-linux-amd64
+#          chmod +x ./kubectl-argo-rollouts-linux-amd64
+#          sudo mv ./kubectl-argo-rollouts-linux-amd64 /usr/local/bin/kubectl-argo-rollouts
+#
+#      - name: Update kubeconfig
+#        run: aws eks update-kubeconfig --name ${{ secrets.CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
+#
+#      - name: Promote Backend
+#        run: kubectl argo rollouts promote youcode-backend
+#
+#      - name: Promote Frontend
+#        run: kubectl argo rollouts promote youcode-frontend
+#

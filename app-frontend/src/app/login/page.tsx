@@ -9,6 +9,9 @@ import { motion } from "framer-motion";
 import { Code2, Loader2, Lock, User } from "lucide-react";
 import Link from 'next/link';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8082/api';
+
+
 export default function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -54,6 +57,9 @@ export default function LoginPage() {
                     <h1 className="text-3xl font-bold tracking-tight text-white">
                         Welcome back
                     </h1>
+                    <p className="text-muted-foreground text-sm">
+                        API URL: {API_URL}
+                    </p>
                     <p className="text-muted-foreground text-sm">
                         Enter your credentials to access your workspace
                     </p>

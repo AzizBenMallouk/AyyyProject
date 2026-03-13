@@ -1,0 +1,102 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: youcode-app:argoproj.io/Rollout:default/youcode-backend
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"youcode-app:argoproj.io/Rollout:default/youcode-backend"},"name":"youcode-backend","namespace":"default"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"youcode-backend"}},"strategy":{"blueGreen":{"activeService":"youcode-backend","autoPromotionEnabled":false,"previewService":"youcode-backend-preview"}},"template":{"metadata":{"annotations":{"prometheus.io/path":"/actuator/prometheus","prometheus.io/port":"8082","prometheus.io/scrape":"true"},"labels":{"app":"youcode-backend"}},"spec":{"containers":[{"env":[{"name":"SPRING_DATASOURCE_URL","value":"jdbc:mysql://localhost:3306/app_db?useSSL=false"},{"name":"SPRING_DATASOURCE_USERNAME","value":"root"},{"name":"SPRING_DATASOURCE_PASSWORD","value":"root"},{"name":"AWS_S3_BUCKET","valueFrom":{"configMapKeyRef":{"key":"s3_bucket_name","name":"backend-config"}}}],"image":"323928186444.dkr.ecr.us-east-1.amazonaws.com/app-backend-prod:b9c7c765c3c92ef5dd4390f3a121893020ba0e10","name":"backend","ports":[{"containerPort":8082}]}],"serviceAccountName":"youcode-backend"}}}}
+    rollout.argoproj.io/revision: "8"
+  creationTimestamp: "2026-03-13T00:06:16Z"
+  generation: 17
+  name: youcode-backend
+  namespace: default
+  resourceVersion: "277901"
+  uid: c25ca1ed-d01f-4e02-838b-6b5c3ddfc4d0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: youcode-backend
+  strategy:
+    blueGreen:
+      activeService: youcode-backend
+      autoPromotionEnabled: false
+      previewService: youcode-backend-preview
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /actuator/prometheus
+        prometheus.io/port: "8082"
+        prometheus.io/scrape: "true"
+      labels:
+        app: youcode-backend
+    spec:
+      containers:
+      - env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://localhost:3306/app_db?useSSL=false
+        - name: SPRING_DATASOURCE_USERNAME
+          value: root
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: root
+        - name: AWS_S3_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              key: s3_bucket_name
+              name: backend-config
+        image: 323928186444.dkr.ecr.us-east-1.amazonaws.com/app-backend-prod:b9c7c765c3c92ef5dd4390f3a121893020ba0e10
+        name: backend
+        ports:
+        - containerPort: 8082
+          protocol: TCP
+        resources: {}
+      serviceAccountName: youcode-backend
+status:
+  HPAReplicas: 1
+  blueGreen:
+    activeSelector: 7b688cb849
+    previewSelector: 56647d6f48
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2026-03-13T12:44:20Z"
+    lastUpdateTime: "2026-03-13T12:44:20Z"
+    message: Rollout is not healthy
+    reason: RolloutHealthy
+    status: "False"
+    type: Healthy
+  - lastTransitionTime: "2026-03-13T12:44:45Z"
+    lastUpdateTime: "2026-03-13T12:44:45Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2026-03-13T13:55:02Z"
+    lastUpdateTime: "2026-03-13T13:55:02Z"
+    message: Rollout does not have minimum availability
+    reason: AvailableReason
+    status: "False"
+    type: Available
+  - lastTransitionTime: "2026-03-13T13:55:31Z"
+    lastUpdateTime: "2026-03-13T13:55:31Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "True"
+    type: Paused
+  - lastTransitionTime: "2026-03-13T13:55:59Z"
+    lastUpdateTime: "2026-03-13T13:55:59Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: Unknown
+    type: Progressing
+  controllerPause: true
+  currentPodHash: 56647d6f48
+  message: BlueGreenPause
+  observedGeneration: "17"
+  pauseConditions:
+  - reason: BlueGreenPause
+    startTime: "2026-03-13T13:55:31Z"
+  phase: Paused
+  replicas: 2
+  selector: app=youcode-backend,rollouts-pod-template-hash=7b688cb849
+  stableRS: 7b688cb849
+  updatedReplicas: 1

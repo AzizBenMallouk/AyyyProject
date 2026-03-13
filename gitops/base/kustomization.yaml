@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - apps/backend/rollout.yaml
   - apps/frontend/rollout.yaml
+  - apps/backend/mysql.yaml
   - networking/ingress.yaml
   - monitoring/monitoring.yaml

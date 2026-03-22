@@ -22,7 +22,8 @@ spec:
       - name: backend
         image: 323928186444.dkr.ecr.us-east-1.amazonaws.com/app-backend-prod:latest
         ports:
-        - containerPort: 8082
+        - name: http
+          containerPort: 8082
         env:
         - name: SPRING_DATASOURCE_URL
           value: "jdbc:mysql://mysql:3306/app_db?useSSL=false&allowPublicKeyRetrieval=true"
@@ -51,8 +52,9 @@ metadata:
   name: youcode-backend
 spec:
   ports:
-  - port: 8082
-    targetPort: 8082
+  - name: http
+    port: 8082
+    targetPort: http
   selector:
     app: youcode-backend
 ---
@@ -62,8 +64,9 @@ metadata:
   name: youcode-backend-preview
 spec:
   ports:
-  - port: 8082
-    targetPort: 8082
+  - name: http
+    port: 8082
+    targetPort: http
   selector:
     app: youcode-backend
 ---

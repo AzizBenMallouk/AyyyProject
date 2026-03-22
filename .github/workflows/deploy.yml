@@ -8,14 +8,41 @@ on:
       - 'app-frontend/**'
       - 'gitops/**'
       - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+    inputs:
+      build_all:
+        description: 'Force build and deploy all components'
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
+  filter:
+    runs-on: ubuntu-latest
+    outputs:
+      backend: ${{ steps.filter.outputs.backend || github.event.inputs.build_all == 'true' }}
+      frontend: ${{ steps.filter.outputs.frontend || github.event.inputs.build_all == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'app-backend/**'
+            frontend:
+              - 'app-frontend/**'
+
   build-and-push:
+    needs: filter
+    if: needs.filter.outputs.backend == 'true' || needs.filter.outputs.frontend == 'true'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -37,6 +64,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build and push Frontend
+        if: needs.filter.outputs.frontend == 'true'
         uses: docker/build-push-action@v5
         with:
           context: ./app-frontend
@@ -49,6 +77,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Build and push Backend
+        if: needs.filter.outputs.backend == 'true'
         uses: docker/build-push-action@v5
         with:
           context: ./app-backend
@@ -61,12 +90,11 @@ jobs:
           cache-to: type=gha,mode=max
 
   deploy:
-    needs: build-and-push
+    needs: [filter, build-and-push]
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: write
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -84,19 +112,23 @@ jobs:
       - name: Update GitOps Kustomization
         run: |
           cd gitops/overlays/prod
-          kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/app-frontend-prod=${{ steps.login-ecr.outputs.registry }}/app-frontend-prod:${{ github.sha }}
-          kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/app-backend-prod=${{ steps.login-ecr.outputs.registry }}/app-backend-prod:${{ github.sha }}
+          if [ "${{ needs.filter.outputs.frontend }}" == "true" ]; then
+            kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/app-frontend-prod=${{ steps.login-ecr.outputs.registry }}/app-frontend-prod:${{ github.sha }}
+          fi
+          if [ "${{ needs.filter.outputs.backend }}" == "true" ]; then
+            kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/app-backend-prod=${{ steps.login-ecr.outputs.registry }}/app-backend-prod:${{ github.sha }}
+          fi
 
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add gitops/overlays/prod/kustomization.yaml
-          git commit -m "chore: update image tags to ${{ github.sha }} [skip ci]"
+          git commit -m "chore: update image tags to ${{ github.sha }} [skip ci]" || echo "No changes to commit"
           git push
 
   promote:
-    needs: deploy
+    needs: [filter, deploy]
     runs-on: ubuntu-latest
     environment: production
     permissions:
@@ -112,7 +144,15 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      - name: Cache argo-rollouts plugin
+        id: cache-rollouts
+        uses: actions/cache@v4
+        with:
+          path: /usr/local/bin/kubectl-argo-rollouts
+          key: ${{ runner.os }}-argo-rollouts-v1.6.0
+
       - name: Install kubectl argo rollouts plugin
+        if: steps.cache-rollouts.outputs.cache-hit != 'true'
         run: |
           curl -LO https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-linux-amd64
           chmod +x ./kubectl-argo-rollouts-linux-amd64
@@ -122,7 +162,9 @@ jobs:
         run: aws eks update-kubeconfig --name ${{ secrets.CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
 
       - name: Promote Backend
+        if: needs.filter.outputs.backend == 'true'
         run: kubectl argo rollouts promote youcode-backend
 
       - name: Promote Frontend
+        if: needs.filter.outputs.frontend == 'true'
         run: kubectl argo rollouts promote youcode-frontend

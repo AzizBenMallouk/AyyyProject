@@ -20,7 +20,8 @@ spec:
       - name: frontend
         image: 323928186444.dkr.ecr.us-east-1.amazonaws.com/app-frontend-prod:latest
         ports:
-        - containerPort: 3000
+        - name: http
+          containerPort: 3000
         env:
         - name: NEXT_PUBLIC_API_URL
           value: "/api"
@@ -36,8 +37,9 @@ metadata:
   name: youcode-frontend
 spec:
   ports:
-  - port: 80
-    targetPort: 3000
+  - name: http
+    port: 80
+    targetPort: http
   selector:
     app: youcode-frontend
 ---
@@ -47,7 +49,8 @@ metadata:
   name: youcode-frontend-preview
 spec:
   ports:
-  - port: 80
-    targetPort: 3000
+  - name: http
+    port: 80
+    targetPort: http
   selector:
     app: youcode-frontend

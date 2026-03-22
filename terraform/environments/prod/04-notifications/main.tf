@@ -112,8 +112,8 @@ resource "aws_iam_role_policy" "feature_notifier" {
 # ============================================================
 data "archive_file" "feature_notifier" {
   type        = "zip"
-  source_dir  = "${path.module}/lambda/feature_notifier"
-  output_path = "${path.module}/lambda/feature_notifier.zip"
+  source_dir  = "${path.root}/../../../../app-notifications-worker"
+  output_path = "${path.module}/feature_notifier.zip"
 }
 
 resource "aws_lambda_function" "feature_notifier" {

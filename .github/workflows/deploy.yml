@@ -127,6 +127,41 @@ jobs:
           git commit -m "chore: update image tags to ${{ github.sha }} [skip ci]" || echo "No changes to commit"
           git push
 
+      - name: Post preview review instructions
+        run: |
+          SHORT_SHA="${{ github.sha }}"
+          SHORT_SHA="${SHORT_SHA:0:7}"
+          echo "## 🟢 Preview Deployment Ready" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| | |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Commit** | \`${SHORT_SHA}\` — ${{ github.event.head_commit.message }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Author** | ${{ github.event.head_commit.author.name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Branch** | \`${{ github.ref_name }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔍 How to review before promoting" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Frontend preview:**" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "kubectl port-forward svc/youcode-frontend-preview 8080:80" >> $GITHUB_STEP_SUMMARY
+          echo "# Then open: http://localhost:8080" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Backend preview:**" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "kubectl port-forward svc/youcode-backend-preview 8082:8082" >> $GITHUB_STEP_SUMMARY
+          echo "# Then open: http://localhost:8082/actuator/health" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Check rollout status:**" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "kubectl argo rollouts get rollout youcode-backend" >> $GITHUB_STEP_SUMMARY
+          echo "kubectl argo rollouts get rollout youcode-frontend" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> ⚠️ **The \`promote\` job is waiting for your approval in GitHub Environments.**" >> $GITHUB_STEP_SUMMARY
+          echo "> Review the preview, then go to the **Actions** tab → approve or reject the deployment." >> $GITHUB_STEP_SUMMARY
+
   promote:
     needs: [filter, deploy]
     runs-on: ubuntu-latest

@@ -161,6 +161,7 @@ jobs:
       - name: Update kubeconfig
         run: aws eks update-kubeconfig --name ${{ secrets.CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
 
+
       - name: Promote Backend
         if: needs.filter.outputs.backend == 'true'
         run: kubectl argo rollouts promote youcode-backend
@@ -168,3 +169,48 @@ jobs:
       - name: Promote Frontend
         if: needs.filter.outputs.frontend == 'true'
         run: kubectl argo rollouts promote youcode-frontend
+
+  # ─────────────────────────────────────────────────────────
+  # Feature Announcement — runs only when commit msg starts with "feature"
+  # ─────────────────────────────────────────────────────────
+  notify:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.head_commit.message, 'feature')
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2   # Need parent commit to compute diff
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Build diff summary
+        id: diff
+        run: |
+          SUMMARY=$(git diff HEAD~1 HEAD --stat | tail -1)
+          FILES=$(git diff HEAD~1 HEAD --name-only | head -20 | tr '\n' ', ')
+          echo "summary=${SUMMARY}" >> $GITHUB_OUTPUT
+          echo "files=${FILES}" >> $GITHUB_OUTPUT
+
+      - name: Send feature event to SQS
+        run: |
+          PAYLOAD=$(cat <<EOF
+          {
+            "commit_sha": "${{ github.sha }}",
+            "commit_message": "${{ github.event.head_commit.message }}",
+            "author": "${{ github.event.head_commit.author.name }}",
+            "diff_summary": "${{ steps.diff.outputs.summary }} — files changed: ${{ steps.diff.outputs.files }}"
+          }
+          EOF
+          )
+          aws sqs send-message \
+            --queue-url "${{ secrets.FEATURE_ANNOUNCEMENTS_SQS_URL }}" \
+            --message-body "$PAYLOAD" \
+            --region "${{ secrets.AWS_REGION }}"

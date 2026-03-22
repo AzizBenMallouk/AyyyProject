@@ -30,7 +30,7 @@ resource "helm_release" "argocd" {
 
   set {
     name  = "server.extraArgs"
-    value = "{--insecure}"
+    value = "{--basehref,/argocd}"
   }
 
   timeout = 600
@@ -116,7 +116,7 @@ module "ecr_frontend" {
   version = "~> 1.6"
 
   repository_name = "app-frontend-prod"
-  repository_image_tag_mutability = "MUTABLE"
+  repository_image_tag_mutability = "IMMUTABLE"
   repository_lifecycle_policy = jsonencode({
     rules = [
       {
@@ -140,7 +140,7 @@ module "ecr_backend" {
   version = "~> 1.6"
 
   repository_name = "app-backend-prod"
-  repository_image_tag_mutability = "MUTABLE"
+  repository_image_tag_mutability = "IMMUTABLE"
   repository_lifecycle_policy = jsonencode({
     rules = [
       {

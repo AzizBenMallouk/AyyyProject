@@ -28,9 +28,10 @@ resource "helm_release" "argocd" {
     value = "internet-facing"
   }
 
+  # Enable insecure mode via ConfigMap (proper Helm approach — avoids overriding all args)
   set {
-    name  = "server.extraArgs"
-    value = "{--basehref,/argocd}"
+    name  = "configs.params.server\\.insecure"
+    value = "true"
   }
 
   timeout = 600

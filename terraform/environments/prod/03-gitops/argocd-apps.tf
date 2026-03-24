@@ -1,34 +1,21 @@
-# ArgoCD Application Management
+# ArgoCD Application — applied via kubectl to avoid Helm CRD marshaling issues
 
-resource "kubernetes_manifest" "youcode_app" {
-  manifest = {
-    apiVersion = "argoproj.io/v1alpha1"
-    kind       = "Application"
-    metadata = {
-      name      = "youcode-app"
-      namespace = "argocd"
-    }
-    spec = {
-      project = "default"
-      source = {
-        repoURL        = "https://github.com/AzizBenMallouk/AyyyProject.git"
-        targetRevision = "HEAD"
-        path           = "gitops/overlays/prod"
-      }
-      destination = {
-        server    = "https://kubernetes.default.svc"
-        namespace = "default"
-      }
-      syncPolicy = {
-        automated = {
-          prune    = true
-          selfHeal = true
-        }
-        syncOptions = [
-          "CreateNamespace=true"
-        ]
-      }
-    }
+resource "null_resource" "youcode_app" {
+  # Re-apply if ArgoCD itself is recreated or the manifest changes
+  triggers = {
+    argocd_release_id = helm_release.argocd.id
+    manifest_hash     = filesha256("${path.root}/../../../../gitops/argocd/application.yaml")
+  }
+
+  provisioner "local-exec" {
+    command = <<-EOT
+      aws eks update-kubeconfig \
+        --name ${data.terraform_remote_state.cluster.outputs.cluster_name} \
+        --region ${var.region} \
+        --alias prod-eks-cluster
+
+      kubectl apply -f ${path.root}/../../../../gitops/argocd/application.yaml
+    EOT
   }
 
   depends_on = [helm_release.argocd]

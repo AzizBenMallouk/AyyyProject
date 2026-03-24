@@ -1,1 +1,60 @@
+# ── Tests ──────────────────────────────────────────────────
 /test
+
+# ── Terraform ──────────────────────────────────────────────
+**/.terraform/
+**/.terraform.lock.hcl
+**/terraform.tfstate
+**/terraform.tfstate.backup
+**/terraform.tfstate.d/
+**/*.tfplan
+**/feature_notifier.zip
+
+# Sensitive var files — never commit secrets
+**/terraform.tfvars
+**/terraform.tfvars.json
+**/*.auto.tfvars
+**/*.auto.tfvars.json
+
+# ── Docker ─────────────────────────────────────────────────
+**/.dockerignore
+**/Dockerfile.local
+
+# ── Node / Next.js (app-frontend) ─────────────────────────
+app-frontend/node_modules/
+app-frontend/.next/
+app-frontend/out/
+app-frontend/.env
+app-frontend/.env.local
+app-frontend/.env.*.local
+app-frontend/npm-debug.log*
+app-frontend/yarn-error.log*
+
+# ── Java / Spring Boot (app-backend) ──────────────────────
+app-backend/target/
+app-backend/.mvn/wrapper/maven-wrapper.jar
+app-backend/*.jar
+app-backend/*.war
+app-backend/.env
+
+# ── Python / Lambda (app-notifications-worker) ─────────────
+app-notifications-worker/__pycache__/
+app-notifications-worker/*.pyc
+app-notifications-worker/*.pyo
+app-notifications-worker/.venv/
+app-notifications-worker/venv/
+app-notifications-worker/.env
+
+# ── IDE & OS ───────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── AWS & Kubernetes ───────────────────────────────────────
+.kube/config
+kubeconfig*
+*.pem
+*.key

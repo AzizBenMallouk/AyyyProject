@@ -11,5 +11,5 @@ output "cluster_certificate_authority_data" {
 }
 
 output "oidc_provider_arn" {
-  value = module.eks.oidc_provider_arn
+  value = aws_iam_openid_connect_provider.eks.arn
 }

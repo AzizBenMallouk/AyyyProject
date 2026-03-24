@@ -1,0 +1,1962 @@
+{
+  "version": 4,
+  "terraform_version": "1.14.7",
+  "serial": 56,
+  "lineage": "6d128d7b-3837-42b7-a9ee-ae4d0e4fa558",
+  "outputs": {
+    "ecr_backend_repository_url": {
+      "value": "323928186444.dkr.ecr.us-east-1.amazonaws.com/app-backend-prod",
+      "type": "string"
+    },
+    "ecr_frontend_repository_url": {
+      "value": "323928186444.dkr.ecr.us-east-1.amazonaws.com/app-frontend-prod",
+      "type": "string"
+    },
+    "s3_bucket_name": {
+      "value": "prod-eks-cluster-aws-s3-uploads-bucket",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "data",
+      "type": "terraform_remote_state",
+      "name": "cluster",
+      "provider": "provider[\"terraform.io/builtin/terraform\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "backend": "local",
+            "config": {
+              "value": {
+                "path": "../02-cluster/terraform.tfstate"
+              },
+              "type": [
+                "object",
+                {
+                  "path": "string"
+                }
+              ]
+            },
+            "defaults": null,
+            "outputs": {
+              "value": {
+                "cluster_certificate_authority_data": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lJQmo4eTNlTVdUQXd3RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TmpBek1USXhNRFV5TUROYUZ3MHpOakF6TURreE1EVTNNRE5hTUJVeApFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLCkFvSUJBUURxOWRsdUhMVFFGVmlnR3NvWkREZXAzbzhWcm5xaWRDdFZTL1J2ak01U2QvSlJFTHpXS0V4Q2ZVamYKYXdRWktKSjAxWVlaeG9FSGRpNDZ6UFJpOUpqUnhjaWRhMUZPdVpnQjNLZENKRDh0NTEyLytyOVVENjAyRDZScgpVOGFwMDR4MTltblNsdEdRS2hYMzdIUVNYcTUwYWJ5NTlIVGo0T1ExaDliQmZjT01xOXEwcWtQa212QTZqajhSCld2Ti9nNjAzeXJvU0c0TGwwV0FHYnc0czdxTnJWN0l2NkpLZlF5eS9ZbmZkek93bzVsTkFaMDMvZGlKcHQybU0KTWNGK0RYaE5MYThMYWRnUVlpRWJkNzdsc0hnTEQxcWdhcjkrUXlNc0didWRxUnlyK2FzY1dSK3Z3aDY1L3NCYwpMK014YTZtWFBWQlFlZXY0eWM1VFV2L2loWUgvQWdNQkFBR2pXVEJYTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQCkJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJSK2kvbVBrWm9iYWowVmI4aS8zaCtORGJnQXp6QVYKQmdOVkhSRUVEakFNZ2dwcmRXSmxjbTVsZEdWek1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQnNnUlNURjQySAp2TGhEdkJqa1pMeTlMaHVLSldEOE1Pc1RyeFMzWlR6Ym81RjZjMkRzOFBHUFNscm1lYWVvSHI1aW0yT0Q3NXg5CjczM29kNFJaVm90NC9XNzRCTjlMc21OL2RIenp1TmFFUi92dDQ4TkxYRXhMcGtNRXcvaDQxMkx0VE82VVZVN2UKOTBBeE50YkhkOUowMkRJa0JZcHkwVTFpTytjZTZMTHdEbzFnQVZsVU03d1JRM2VMUkhIa0MxRitZeVZiRUk4bAoyUTQxdUhIdVVwMk5WYUk3VmdPMGJrZTdGSHhpLzhDM3VwMHFMcjJFb0tweVBJcGF3a0hTVlBTaXVMbk1ja1ZICm5WV1ZwWFIvRjVhUGQwVjEvRURGcy84ekxob09XNXh0QlBaWDhzb2premtaN0RQV1QvcXJjbEhvMlRkUkhJcjEKYnlnZm91TUJ5aWQxCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                "cluster_endpoint": "https://5816F229F450042D2224CBD1EEA21CCF.gr7.us-east-1.eks.amazonaws.com",
+                "cluster_name": "prod-eks-cluster",
+                "oidc_provider_arn": "arn:aws:iam::323928186444:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF"
+              },
+              "type": [
+                "object",
+                {
+                  "cluster_certificate_authority_data": "string",
+                  "cluster_endpoint": "string",
+                  "cluster_name": "string",
+                  "oidc_provider_arn": "string"
+                }
+              ]
+            },
+            "workspace": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "backend_s3",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::323928186444:policy/prod-eks-cluster-backend-s3-policy",
+            "attachment_count": 1,
+            "description": "Policy for backend to access S3 uploads",
+            "id": "arn:aws:iam::323928186444:policy/prod-eks-cluster-backend-s3-policy",
+            "name": "prod-eks-cluster-backend-s3-policy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:DeleteObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::prod-eks-cluster-aws-s3-uploads-bucket\",\"arn:aws:s3:::prod-eks-cluster-aws-s3-uploads-bucket/*\"]}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAUW2473ZGE4632KPJE",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.s3_uploads.aws_s3_bucket.this"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "helm_release",
+      "name": "argo_rollouts",
+      "provider": "provider[\"registry.terraform.io/hashicorp/helm\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "atomic": false,
+            "chart": "argo-rollouts",
+            "cleanup_on_fail": false,
+            "create_namespace": true,
+            "dependency_update": false,
+            "description": null,
+            "devel": null,
+            "disable_crd_hooks": false,
+            "disable_openapi_validation": false,
+            "disable_webhooks": false,
+            "force_update": false,
+            "id": "argo-rollouts",
+            "keyring": null,
+            "lint": false,
+            "manifest": null,
+            "max_history": 0,
+            "metadata": [
+              {
+                "app_version": "v1.8.4",
+                "chart": "argo-rollouts",
+                "first_deployed": 1773353121,
+                "last_deployed": 1773353121,
+                "name": "argo-rollouts",
+                "namespace": "argo-rollouts",
+                "notes": "",
+                "revision": 1,
+                "values": "{}",
+                "version": "2.40.6"
+              }
+            ],
+            "name": "argo-rollouts",
+            "namespace": "argo-rollouts",
+            "pass_credentials": false,
+            "postrender": [],
+            "recreate_pods": false,
+            "render_subchart_notes": true,
+            "replace": false,
+            "repository": "https://argoproj.github.io/argo-helm",
+            "repository_ca_file": null,
+            "repository_cert_file": null,
+            "repository_key_file": null,
+            "repository_password": null,
+            "repository_username": null,
+            "reset_values": false,
+            "reuse_values": false,
+            "set": [],
+            "set_list": [],
+            "set_sensitive": [],
+            "skip_crds": false,
+            "status": "deployed",
+            "timeout": 600,
+            "upgrade_install": null,
+            "values": null,
+            "verify": false,
+            "version": "2.40.6",
+            "wait": true,
+            "wait_for_jobs": false
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "repository_password"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "data.terraform_remote_state.cluster"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "helm_release",
+      "name": "argocd",
+      "provider": "provider[\"registry.terraform.io/hashicorp/helm\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "atomic": false,
+            "chart": "argo-cd",
+            "cleanup_on_fail": false,
+            "create_namespace": true,
+            "dependency_update": false,
+            "description": null,
+            "devel": null,
+            "disable_crd_hooks": false,
+            "disable_openapi_validation": false,
+            "disable_webhooks": false,
+            "force_update": false,
+            "id": "argocd",
+            "keyring": null,
+            "lint": false,
+            "manifest": null,
+            "max_history": 0,
+            "metadata": [
+              {
+                "app_version": "v3.3.3",
+                "chart": "argo-cd",
+                "first_deployed": 1773353172,
+                "last_deployed": 1773360571,
+                "name": "argocd",
+                "namespace": "argocd",
+                "notes": "\nIn order to access the server UI you have the following options:\n\n1. kubectl port-forward service/argocd-server -n argocd 8080:443\n\n    and then open the browser on http://localhost:8080 and accept the certificate\n\n2. enable ingress in the values file `server.ingress.enabled` and either\n      - Add the annotation for ssl passthrough: https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#option-1-ssl-passthrough\n      - Set the `configs.params.\"server.insecure\"` in the values file and terminate SSL at your ingress: https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#option-2-multiple-ingress-objects-and-hosts\n\n\nAfter reaching the UI the first time you can login with username: admin and the random password generated during the installation. You can find the password by running:\n\nkubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=\"{.data.password}\" | base64 -d\n\n(You should delete the initial secret afterwards as suggested by the Getting Started Guide: https://argo-cd.readthedocs.io/en/stable/getting_started/#4-login-using-the-cli)\n",
+                "revision": 2,
+                "values": "{\"server\":{\"extraArgs\":[\"--insecure\"],\"service\":{\"annotations\":{\"service.beta.kubernetes.io/aws-load-balancer-nlb-target-type\":\"ip\",\"service.beta.kubernetes.io/aws-load-balancer-scheme\":\"internet-facing\",\"service.beta.kubernetes.io/aws-load-balancer-type\":\"external\"},\"type\":\"LoadBalancer\"}}}",
+                "version": "9.4.10"
+              }
+            ],
+            "name": "argocd",
+            "namespace": "argocd",
+            "pass_credentials": false,
+            "postrender": [],
+            "recreate_pods": false,
+            "render_subchart_notes": true,
+            "replace": false,
+            "repository": "https://argoproj.github.io/argo-helm",
+            "repository_ca_file": null,
+            "repository_cert_file": null,
+            "repository_key_file": null,
+            "repository_password": null,
+            "repository_username": null,
+            "reset_values": false,
+            "reuse_values": false,
+            "set": [
+              {
+                "name": "server.extraArgs",
+                "type": "",
+                "value": "{--insecure}"
+              },
+              {
+                "name": "server.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-nlb-target-type",
+                "type": "",
+                "value": "ip"
+              },
+              {
+                "name": "server.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-scheme",
+                "type": "",
+                "value": "internet-facing"
+              },
+              {
+                "name": "server.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type",
+                "type": "",
+                "value": "external"
+              },
+              {
+                "name": "server.service.type",
+                "type": "",
+                "value": "LoadBalancer"
+              }
+            ],
+            "set_list": [],
+            "set_sensitive": [],
+            "skip_crds": false,
+            "status": "deployed",
+            "timeout": 600,
+            "upgrade_install": null,
+            "values": null,
+            "verify": false,
+            "version": "9.4.10",
+            "wait": true,
+            "wait_for_jobs": false
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "repository_password"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "data.terraform_remote_state.cluster"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "helm_release",
+      "name": "aws_lb_controller",
+      "provider": "provider[\"registry.terraform.io/hashicorp/helm\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "atomic": false,
+            "chart": "aws-load-balancer-controller",
+            "cleanup_on_fail": false,
+            "create_namespace": false,
+            "dependency_update": false,
+            "description": null,
+            "devel": null,
+            "disable_crd_hooks": false,
+            "disable_openapi_validation": false,
+            "disable_webhooks": false,
+            "force_update": false,
+            "id": "aws-load-balancer-controller",
+            "keyring": null,
+            "lint": false,
+            "manifest": null,
+            "max_history": 0,
+            "metadata": [
+              {
+                "app_version": "v3.1.0",
+                "chart": "aws-load-balancer-controller",
+                "first_deployed": 1773353127,
+                "last_deployed": 1773353127,
+                "name": "aws-load-balancer-controller",
+                "namespace": "kube-system",
+                "notes": "AWS Load Balancer controller installed!\n",
+                "revision": 1,
+                "values": "{\"clusterName\":\"prod-eks-cluster\",\"serviceAccount\":{\"annotations\":{\"eks.amazonaws.com/role-arn\":\"arn:aws:iam::323928186444:role/prod-eks-cluster-lb-controller\"},\"create\":true,\"name\":\"aws-load-balancer-controller\"}}",
+                "version": "3.1.0"
+              }
+            ],
+            "name": "aws-load-balancer-controller",
+            "namespace": "kube-system",
+            "pass_credentials": false,
+            "postrender": [],
+            "recreate_pods": false,
+            "render_subchart_notes": true,
+            "replace": false,
+            "repository": "https://aws.github.io/eks-charts",
+            "repository_ca_file": null,
+            "repository_cert_file": null,
+            "repository_key_file": null,
+            "repository_password": null,
+            "repository_username": null,
+            "reset_values": false,
+            "reuse_values": false,
+            "set": [
+              {
+                "name": "clusterName",
+                "type": "",
+                "value": "prod-eks-cluster"
+              },
+              {
+                "name": "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn",
+                "type": "",
+                "value": "arn:aws:iam::323928186444:role/prod-eks-cluster-lb-controller"
+              },
+              {
+                "name": "serviceAccount.create",
+                "type": "",
+                "value": "true"
+              },
+              {
+                "name": "serviceAccount.name",
+                "type": "",
+                "value": "aws-load-balancer-controller"
+              }
+            ],
+            "set_list": [],
+            "set_sensitive": [],
+            "skip_crds": false,
+            "status": "deployed",
+            "timeout": 300,
+            "upgrade_install": null,
+            "values": null,
+            "verify": false,
+            "version": "3.1.0",
+            "wait": true,
+            "wait_for_jobs": false
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "repository_password"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "data.terraform_remote_state.cluster",
+            "module.lb_role.aws_iam_role.this",
+            "module.lb_role.data.aws_caller_identity.current",
+            "module.lb_role.data.aws_iam_policy_document.this",
+            "module.lb_role.data.aws_partition.current"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.backend_s3_role",
+      "mode": "data",
+      "type": "aws_caller_identity",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "323928186444",
+            "arn": "arn:aws:iam::323928186444:user/benaziz",
+            "id": "323928186444",
+            "user_id": "AIDAUW2473ZGN6AVFT7QT"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.backend_s3_role",
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "1108404896",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRoleWithWebIdentity\",\n      \"Principal\": {\n        \"Federated\": \"arn:aws:iam::323928186444:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF\"\n      },\n      \"Condition\": {\n        \"StringEquals\": {\n          \"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:aud\": \"sts.amazonaws.com\",\n          \"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:sub\": \"system:serviceaccount:default:youcode-backend\"\n        }\n      }\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"sts:AssumeRoleWithWebIdentity\",\"Principal\":{\"Federated\":\"arn:aws:iam::323928186444:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF\"},\"Condition\":{\"StringEquals\":{\"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:aud\":\"sts.amazonaws.com\",\"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:sub\":\"system:serviceaccount:default:youcode-backend\"}}}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "sts:AssumeRoleWithWebIdentity"
+                ],
+                "condition": [
+                  {
+                    "test": "StringEquals",
+                    "values": [
+                      "sts.amazonaws.com"
+                    ],
+                    "variable": "oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:aud"
+                  },
+                  {
+                    "test": "StringEquals",
+                    "values": [
+                      "system:serviceaccount:default:youcode-backend"
+                    ],
+                    "variable": "oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:sub"
+                  }
+                ],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [
+                  {
+                    "identifiers": [
+                      "arn:aws:iam::323928186444:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF"
+                    ],
+                    "type": "Federated"
+                  }
+                ],
+                "resources": [],
+                "sid": ""
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.backend_s3_role",
+      "mode": "data",
+      "type": "aws_partition",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "dns_suffix": "amazonaws.com",
+            "id": "aws",
+            "partition": "aws",
+            "reverse_dns_prefix": "com.amazonaws"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.backend_s3_role",
+      "mode": "data",
+      "type": "aws_region",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "description": "US East (N. Virginia)",
+            "endpoint": "ec2.us-east-1.amazonaws.com",
+            "id": "us-east-1",
+            "name": "us-east-1"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.backend_s3_role",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::323928186444:role/prod-eks-cluster-backend-s3",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRoleWithWebIdentity\",\"Condition\":{\"StringEquals\":{\"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:aud\":\"sts.amazonaws.com\",\"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:sub\":\"system:serviceaccount:default:youcode-backend\"}},\"Effect\":\"Allow\",\"Principal\":{\"Federated\":\"arn:aws:iam::323928186444:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2026-03-12T20:22:55Z",
+            "description": "",
+            "force_detach_policies": true,
+            "id": "prod-eks-cluster-backend-s3",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::323928186444:policy/prod-eks-cluster-backend-s3-policy"
+            ],
+            "max_session_duration": 3600,
+            "name": "prod-eks-cluster-backend-s3",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROAUW2473ZGP3WYZQLJW"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "data.terraform_remote_state.cluster",
+            "module.backend_s3_role.data.aws_caller_identity.current",
+            "module.backend_s3_role.data.aws_iam_policy_document.this",
+            "module.backend_s3_role.data.aws_partition.current"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.backend_s3_role",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": "policy",
+          "schema_version": 0,
+          "attributes": {
+            "id": "prod-eks-cluster-backend-s3-20260312204805619900000001",
+            "policy_arn": "arn:aws:iam::323928186444:policy/prod-eks-cluster-backend-s3-policy",
+            "role": "prod-eks-cluster-backend-s3"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_policy.backend_s3",
+            "data.terraform_remote_state.cluster",
+            "module.backend_s3_role.aws_iam_role.this",
+            "module.backend_s3_role.data.aws_caller_identity.current",
+            "module.backend_s3_role.data.aws_iam_policy_document.this",
+            "module.backend_s3_role.data.aws_partition.current",
+            "module.s3_uploads.aws_s3_bucket.this"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_backend",
+      "mode": "data",
+      "type": "aws_caller_identity",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "323928186444",
+            "arn": "arn:aws:iam::323928186444:user/benaziz",
+            "id": "323928186444",
+            "user_id": "AIDAUW2473ZGN6AVFT7QT"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_backend",
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "repository",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "422193572",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"PrivateReadOnly\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ecr:ListTagsForResource\",\n        \"ecr:ListImages\",\n        \"ecr:GetRepositoryPolicy\",\n        \"ecr:GetLifecyclePolicyPreview\",\n        \"ecr:GetLifecyclePolicy\",\n        \"ecr:GetDownloadUrlForLayer\",\n        \"ecr:GetAuthorizationToken\",\n        \"ecr:DescribeRepositories\",\n        \"ecr:DescribeImages\",\n        \"ecr:DescribeImageScanFindings\",\n        \"ecr:BatchGetImage\",\n        \"ecr:BatchCheckLayerAvailability\"\n      ],\n      \"Principal\": {\n        \"AWS\": \"arn:aws:iam::323928186444:root\"\n      }\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"PrivateReadOnly\",\"Effect\":\"Allow\",\"Action\":[\"ecr:ListTagsForResource\",\"ecr:ListImages\",\"ecr:GetRepositoryPolicy\",\"ecr:GetLifecyclePolicyPreview\",\"ecr:GetLifecyclePolicy\",\"ecr:GetDownloadUrlForLayer\",\"ecr:GetAuthorizationToken\",\"ecr:DescribeRepositories\",\"ecr:DescribeImages\",\"ecr:DescribeImageScanFindings\",\"ecr:BatchGetImage\",\"ecr:BatchCheckLayerAvailability\"],\"Principal\":{\"AWS\":\"arn:aws:iam::323928186444:root\"}}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "ecr:BatchCheckLayerAvailability",
+                  "ecr:BatchGetImage",
+                  "ecr:DescribeImageScanFindings",
+                  "ecr:DescribeImages",
+                  "ecr:DescribeRepositories",
+                  "ecr:GetAuthorizationToken",
+                  "ecr:GetDownloadUrlForLayer",
+                  "ecr:GetLifecyclePolicy",
+                  "ecr:GetLifecyclePolicyPreview",
+                  "ecr:GetRepositoryPolicy",
+                  "ecr:ListImages",
+                  "ecr:ListTagsForResource"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [
+                  {
+                    "identifiers": [
+                      "arn:aws:iam::323928186444:root"
+                    ],
+                    "type": "AWS"
+                  }
+                ],
+                "resources": [],
+                "sid": "PrivateReadOnly"
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_backend",
+      "mode": "data",
+      "type": "aws_partition",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "dns_suffix": "amazonaws.com",
+            "id": "aws",
+            "partition": "aws",
+            "reverse_dns_prefix": "com.amazonaws"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_backend",
+      "mode": "managed",
+      "type": "aws_ecr_lifecycle_policy",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "app-backend-prod",
+            "policy": "{\"rules\":[{\"action\":{\"type\":\"expire\"},\"description\":\"Keep last 10 images\",\"rulePriority\":1,\"selection\":{\"countNumber\":10,\"countType\":\"imageCountMoreThan\",\"tagStatus\":\"any\"}}]}",
+            "registry_id": "323928186444",
+            "repository": "app-backend-prod"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ecr_backend.aws_ecr_repository.this"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_backend",
+      "mode": "managed",
+      "type": "aws_ecr_repository",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ecr:us-east-1:323928186444:repository/app-backend-prod",
+            "encryption_configuration": [
+              {
+                "encryption_type": "AES256",
+                "kms_key": ""
+              }
+            ],
+            "force_delete": null,
+            "id": "app-backend-prod",
+            "image_scanning_configuration": [
+              {
+                "scan_on_push": true
+              }
+            ],
+            "image_tag_mutability": "MUTABLE",
+            "name": "app-backend-prod",
+            "registry_id": "323928186444",
+            "repository_url": "323928186444.dkr.ecr.us-east-1.amazonaws.com/app-backend-prod",
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_backend",
+      "mode": "managed",
+      "type": "aws_ecr_repository_policy",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "app-backend-prod",
+            "policy": "{\"Statement\":[{\"Action\":[\"ecr:ListTagsForResource\",\"ecr:ListImages\",\"ecr:GetRepositoryPolicy\",\"ecr:GetLifecyclePolicyPreview\",\"ecr:GetLifecyclePolicy\",\"ecr:GetDownloadUrlForLayer\",\"ecr:GetAuthorizationToken\",\"ecr:DescribeRepositories\",\"ecr:DescribeImages\",\"ecr:DescribeImageScanFindings\",\"ecr:BatchGetImage\",\"ecr:BatchCheckLayerAvailability\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::323928186444:root\"},\"Sid\":\"PrivateReadOnly\"}],\"Version\":\"2012-10-17\"}",
+            "registry_id": "323928186444",
+            "repository": "app-backend-prod"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ecr_backend.aws_ecr_repository.this",
+            "module.ecr_backend.data.aws_caller_identity.current",
+            "module.ecr_backend.data.aws_iam_policy_document.repository",
+            "module.ecr_backend.data.aws_partition.current"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_frontend",
+      "mode": "data",
+      "type": "aws_caller_identity",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "323928186444",
+            "arn": "arn:aws:iam::323928186444:user/benaziz",
+            "id": "323928186444",
+            "user_id": "AIDAUW2473ZGN6AVFT7QT"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_frontend",
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "repository",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "422193572",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"PrivateReadOnly\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ecr:ListTagsForResource\",\n        \"ecr:ListImages\",\n        \"ecr:GetRepositoryPolicy\",\n        \"ecr:GetLifecyclePolicyPreview\",\n        \"ecr:GetLifecyclePolicy\",\n        \"ecr:GetDownloadUrlForLayer\",\n        \"ecr:GetAuthorizationToken\",\n        \"ecr:DescribeRepositories\",\n        \"ecr:DescribeImages\",\n        \"ecr:DescribeImageScanFindings\",\n        \"ecr:BatchGetImage\",\n        \"ecr:BatchCheckLayerAvailability\"\n      ],\n      \"Principal\": {\n        \"AWS\": \"arn:aws:iam::323928186444:root\"\n      }\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"PrivateReadOnly\",\"Effect\":\"Allow\",\"Action\":[\"ecr:ListTagsForResource\",\"ecr:ListImages\",\"ecr:GetRepositoryPolicy\",\"ecr:GetLifecyclePolicyPreview\",\"ecr:GetLifecyclePolicy\",\"ecr:GetDownloadUrlForLayer\",\"ecr:GetAuthorizationToken\",\"ecr:DescribeRepositories\",\"ecr:DescribeImages\",\"ecr:DescribeImageScanFindings\",\"ecr:BatchGetImage\",\"ecr:BatchCheckLayerAvailability\"],\"Principal\":{\"AWS\":\"arn:aws:iam::323928186444:root\"}}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "ecr:BatchCheckLayerAvailability",
+                  "ecr:BatchGetImage",
+                  "ecr:DescribeImageScanFindings",
+                  "ecr:DescribeImages",
+                  "ecr:DescribeRepositories",
+                  "ecr:GetAuthorizationToken",
+                  "ecr:GetDownloadUrlForLayer",
+                  "ecr:GetLifecyclePolicy",
+                  "ecr:GetLifecyclePolicyPreview",
+                  "ecr:GetRepositoryPolicy",
+                  "ecr:ListImages",
+                  "ecr:ListTagsForResource"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [
+                  {
+                    "identifiers": [
+                      "arn:aws:iam::323928186444:root"
+                    ],
+                    "type": "AWS"
+                  }
+                ],
+                "resources": [],
+                "sid": "PrivateReadOnly"
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_frontend",
+      "mode": "data",
+      "type": "aws_partition",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "dns_suffix": "amazonaws.com",
+            "id": "aws",
+            "partition": "aws",
+            "reverse_dns_prefix": "com.amazonaws"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_frontend",
+      "mode": "managed",
+      "type": "aws_ecr_lifecycle_policy",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "app-frontend-prod",
+            "policy": "{\"rules\":[{\"action\":{\"type\":\"expire\"},\"description\":\"Keep last 10 images\",\"rulePriority\":1,\"selection\":{\"countNumber\":10,\"countType\":\"imageCountMoreThan\",\"tagStatus\":\"any\"}}]}",
+            "registry_id": "323928186444",
+            "repository": "app-frontend-prod"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ecr_frontend.aws_ecr_repository.this"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_frontend",
+      "mode": "managed",
+      "type": "aws_ecr_repository",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ecr:us-east-1:323928186444:repository/app-frontend-prod",
+            "encryption_configuration": [
+              {
+                "encryption_type": "AES256",
+                "kms_key": ""
+              }
+            ],
+            "force_delete": null,
+            "id": "app-frontend-prod",
+            "image_scanning_configuration": [
+              {
+                "scan_on_push": true
+              }
+            ],
+            "image_tag_mutability": "MUTABLE",
+            "name": "app-frontend-prod",
+            "registry_id": "323928186444",
+            "repository_url": "323928186444.dkr.ecr.us-east-1.amazonaws.com/app-frontend-prod",
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "module": "module.ecr_frontend",
+      "mode": "managed",
+      "type": "aws_ecr_repository_policy",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "app-frontend-prod",
+            "policy": "{\"Statement\":[{\"Action\":[\"ecr:ListTagsForResource\",\"ecr:ListImages\",\"ecr:GetRepositoryPolicy\",\"ecr:GetLifecyclePolicyPreview\",\"ecr:GetLifecyclePolicy\",\"ecr:GetDownloadUrlForLayer\",\"ecr:GetAuthorizationToken\",\"ecr:DescribeRepositories\",\"ecr:DescribeImages\",\"ecr:DescribeImageScanFindings\",\"ecr:BatchGetImage\",\"ecr:BatchCheckLayerAvailability\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::323928186444:root\"},\"Sid\":\"PrivateReadOnly\"}],\"Version\":\"2012-10-17\"}",
+            "registry_id": "323928186444",
+            "repository": "app-frontend-prod"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ecr_frontend.aws_ecr_repository.this",
+            "module.ecr_frontend.data.aws_caller_identity.current",
+            "module.ecr_frontend.data.aws_iam_policy_document.repository",
+            "module.ecr_frontend.data.aws_partition.current"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.lb_role",
+      "mode": "data",
+      "type": "aws_caller_identity",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "323928186444",
+            "arn": "arn:aws:iam::323928186444:user/benaziz",
+            "id": "323928186444",
+            "user_id": "AIDAUW2473ZGN6AVFT7QT"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.lb_role",
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "load_balancer_controller",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "1541424006",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iam:CreateServiceLinkedRole\",\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"StringEquals\": {\n          \"iam:AWSServiceName\": \"elasticloadbalancing.amazonaws.com\"\n        }\n      }\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"elasticloadbalancing:DescribeTrustStores\",\n        \"elasticloadbalancing:DescribeTargetHealth\",\n        \"elasticloadbalancing:DescribeTargetGroups\",\n        \"elasticloadbalancing:DescribeTargetGroupAttributes\",\n        \"elasticloadbalancing:DescribeTags\",\n        \"elasticloadbalancing:DescribeSSLPolicies\",\n        \"elasticloadbalancing:DescribeRules\",\n        \"elasticloadbalancing:DescribeLoadBalancers\",\n        \"elasticloadbalancing:DescribeLoadBalancerAttributes\",\n        \"elasticloadbalancing:DescribeListeners\",\n        \"elasticloadbalancing:DescribeListenerCertificates\",\n        \"elasticloadbalancing:DescribeListenerAttributes\",\n        \"elasticloadbalancing:DescribeCapacityReservation\",\n        \"ec2:GetSecurityGroupsForVpc\",\n        \"ec2:GetCoipPoolUsage\",\n        \"ec2:DescribeVpcs\",\n        \"ec2:DescribeVpcPeeringConnections\",\n        \"ec2:DescribeTags\",\n        \"ec2:DescribeSubnets\",\n        \"ec2:DescribeSecurityGroups\",\n        \"ec2:DescribeRouteTables\",\n        \"ec2:DescribeNetworkInterfaces\",\n        \"ec2:DescribeIpamPools\",\n        \"ec2:DescribeInternetGateways\",\n        \"ec2:DescribeInstances\",\n        \"ec2:DescribeCoipPools\",\n        \"ec2:DescribeAvailabilityZones\",\n        \"ec2:DescribeAddresses\",\n        \"ec2:DescribeAccountAttributes\"\n      ],\n      \"Resource\": \"*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"wafv2:GetWebACLForResource\",\n        \"wafv2:GetWebACL\",\n        \"wafv2:DisassociateWebACL\",\n        \"wafv2:AssociateWebACL\",\n        \"waf-regional:GetWebACLForResource\",\n        \"waf-regional:GetWebACL\",\n        \"waf-regional:DisassociateWebACL\",\n        \"waf-regional:AssociateWebACL\",\n        \"shield:GetSubscriptionState\",\n        \"shield:DescribeProtection\",\n        \"shield:DeleteProtection\",\n        \"shield:CreateProtection\",\n        \"iam:ListServerCertificates\",\n        \"iam:GetServerCertificate\",\n        \"cognito-idp:DescribeUserPoolClient\",\n        \"acm:ListCertificates\",\n        \"acm:DescribeCertificate\"\n      ],\n      \"Resource\": \"*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ec2:RevokeSecurityGroupIngress\",\n        \"ec2:AuthorizeSecurityGroupIngress\"\n      ],\n      \"Resource\": \"*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"ec2:CreateSecurityGroup\",\n      \"Resource\": \"*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"ec2:CreateTags\",\n      \"Resource\": \"arn:aws:ec2:*:*:security-group/*\",\n      \"Condition\": {\n        \"Null\": {\n          \"aws:RequestTag/elbv2.k8s.aws/cluster\": \"false\"\n        },\n        \"StringEquals\": {\n          \"ec2:CreateAction\": \"CreateSecurityGroup\"\n        }\n      }\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ec2:DeleteTags\",\n        \"ec2:CreateTags\"\n      ],\n      \"Resource\": \"arn:aws:ec2:*:*:security-group/*\",\n      \"Condition\": {\n        \"Null\": {\n          \"aws:RequestTag/elbv2.k8s.aws/cluster\": \"true\",\n          \"aws:ResourceTag/elbv2.k8s.aws/cluster\": \"false\"\n        }\n      }\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ec2:RevokeSecurityGroupIngress\",\n        \"ec2:DeleteSecurityGroup\",\n        \"ec2:AuthorizeSecurityGroupIngress\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"Null\": {\n          \"aws:ResourceTag/elbv2.k8s.aws/cluster\": \"false\"\n        }\n      }\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"elasticloadbalancing:CreateTargetGroup\",\n        \"elasticloadbalancing:CreateLoadBalancer\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"Null\": {\n          \"aws:RequestTag/elbv2.k8s.aws/cluster\": \"false\"\n        }\n      }\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"elasticloadbalancing:DeleteRule\",\n        \"elasticloadbalancing:DeleteListener\",\n        \"elasticloadbalancing:CreateRule\",\n        \"elasticloadbalancing:CreateListener\"\n      ],\n      \"Resource\": \"*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"elasticloadbalancing:RemoveTags\",\n        \"elasticloadbalancing:AddTags\"\n      ],\n      \"Resource\": [\n        \"arn:aws:elasticloadbalancing:*:*:targetgroup/*/*\",\n        \"arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*\",\n        \"arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*\"\n      ],\n      \"Condition\": {\n        \"Null\": {\n          \"aws:RequestTag/elbv2.k8s.aws/cluster\": \"true\",\n          \"aws:ResourceTag/elbv2.k8s.aws/cluster\": \"false\"\n        }\n      }\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"elasticloadbalancing:RemoveTags\",\n        \"elasticloadbalancing:AddTags\"\n      ],\n      \"Resource\": [\n        \"arn:aws:elasticloadbalancing:*:*:listener/net/*/*/*\",\n        \"arn:aws:elasticloadbalancing:*:*:listener/app/*/*/*\",\n        \"arn:aws:elasticloadbalancing:*:*:listener-rule/net/*/*/*\",\n        \"arn:aws:elasticloadbalancing:*:*:listener-rule/app/*/*/*\"\n      ]\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"elasticloadbalancing:SetSubnets\",\n        \"elasticloadbalancing:SetSecurityGroups\",\n        \"elasticloadbalancing:SetIpAddressType\",\n        \"elasticloadbalancing:ModifyTargetGroupAttributes\",\n        \"elasticloadbalancing:ModifyTargetGroup\",\n        \"elasticloadbalancing:ModifyLoadBalancerAttributes\",\n        \"elasticloadbalancing:ModifyListenerAttributes\",\n        \"elasticloadbalancing:ModifyIpPools\",\n        \"elasticloadbalancing:ModifyCapacityReservation\",\n        \"elasticloadbalancing:DeleteTargetGroup\",\n        \"elasticloadbalancing:DeleteLoadBalancer\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"Null\": {\n          \"aws:ResourceTag/elbv2.k8s.aws/cluster\": \"false\"\n        }\n      }\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"elasticloadbalancing:AddTags\",\n      \"Resource\": [\n        \"arn:aws:elasticloadbalancing:*:*:targetgroup/*/*\",\n        \"arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*\",\n        \"arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*\"\n      ],\n      \"Condition\": {\n        \"Null\": {\n          \"aws:RequestTag/elbv2.k8s.aws/cluster\": \"false\"\n        },\n        \"StringEquals\": {\n          \"elasticloadbalancing:CreateAction\": [\n            \"CreateTargetGroup\",\n            \"CreateLoadBalancer\"\n          ]\n        }\n      }\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"elasticloadbalancing:RegisterTargets\",\n        \"elasticloadbalancing:DeregisterTargets\"\n      ],\n      \"Resource\": \"arn:aws:elasticloadbalancing:*:*:targetgroup/*/*\"\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"elasticloadbalancing:SetWebAcl\",\n        \"elasticloadbalancing:SetRulePriorities\",\n        \"elasticloadbalancing:RemoveListenerCertificates\",\n        \"elasticloadbalancing:ModifyRule\",\n        \"elasticloadbalancing:ModifyListener\",\n        \"elasticloadbalancing:AddListenerCertificates\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"iam:CreateServiceLinkedRole\",\"Resource\":\"*\",\"Condition\":{\"StringEquals\":{\"iam:AWSServiceName\":\"elasticloadbalancing.amazonaws.com\"}}},{\"Effect\":\"Allow\",\"Action\":[\"elasticloadbalancing:DescribeTrustStores\",\"elasticloadbalancing:DescribeTargetHealth\",\"elasticloadbalancing:DescribeTargetGroups\",\"elasticloadbalancing:DescribeTargetGroupAttributes\",\"elasticloadbalancing:DescribeTags\",\"elasticloadbalancing:DescribeSSLPolicies\",\"elasticloadbalancing:DescribeRules\",\"elasticloadbalancing:DescribeLoadBalancers\",\"elasticloadbalancing:DescribeLoadBalancerAttributes\",\"elasticloadbalancing:DescribeListeners\",\"elasticloadbalancing:DescribeListenerCertificates\",\"elasticloadbalancing:DescribeListenerAttributes\",\"elasticloadbalancing:DescribeCapacityReservation\",\"ec2:GetSecurityGroupsForVpc\",\"ec2:GetCoipPoolUsage\",\"ec2:DescribeVpcs\",\"ec2:DescribeVpcPeeringConnections\",\"ec2:DescribeTags\",\"ec2:DescribeSubnets\",\"ec2:DescribeSecurityGroups\",\"ec2:DescribeRouteTables\",\"ec2:DescribeNetworkInterfaces\",\"ec2:DescribeIpamPools\",\"ec2:DescribeInternetGateways\",\"ec2:DescribeInstances\",\"ec2:DescribeCoipPools\",\"ec2:DescribeAvailabilityZones\",\"ec2:DescribeAddresses\",\"ec2:DescribeAccountAttributes\"],\"Resource\":\"*\"},{\"Effect\":\"Allow\",\"Action\":[\"wafv2:GetWebACLForResource\",\"wafv2:GetWebACL\",\"wafv2:DisassociateWebACL\",\"wafv2:AssociateWebACL\",\"waf-regional:GetWebACLForResource\",\"waf-regional:GetWebACL\",\"waf-regional:DisassociateWebACL\",\"waf-regional:AssociateWebACL\",\"shield:GetSubscriptionState\",\"shield:DescribeProtection\",\"shield:DeleteProtection\",\"shield:CreateProtection\",\"iam:ListServerCertificates\",\"iam:GetServerCertificate\",\"cognito-idp:DescribeUserPoolClient\",\"acm:ListCertificates\",\"acm:DescribeCertificate\"],\"Resource\":\"*\"},{\"Effect\":\"Allow\",\"Action\":[\"ec2:RevokeSecurityGroupIngress\",\"ec2:AuthorizeSecurityGroupIngress\"],\"Resource\":\"*\"},{\"Effect\":\"Allow\",\"Action\":\"ec2:CreateSecurityGroup\",\"Resource\":\"*\"},{\"Effect\":\"Allow\",\"Action\":\"ec2:CreateTags\",\"Resource\":\"arn:aws:ec2:*:*:security-group/*\",\"Condition\":{\"Null\":{\"aws:RequestTag/elbv2.k8s.aws/cluster\":\"false\"},\"StringEquals\":{\"ec2:CreateAction\":\"CreateSecurityGroup\"}}},{\"Effect\":\"Allow\",\"Action\":[\"ec2:DeleteTags\",\"ec2:CreateTags\"],\"Resource\":\"arn:aws:ec2:*:*:security-group/*\",\"Condition\":{\"Null\":{\"aws:RequestTag/elbv2.k8s.aws/cluster\":\"true\",\"aws:ResourceTag/elbv2.k8s.aws/cluster\":\"false\"}}},{\"Effect\":\"Allow\",\"Action\":[\"ec2:RevokeSecurityGroupIngress\",\"ec2:DeleteSecurityGroup\",\"ec2:AuthorizeSecurityGroupIngress\"],\"Resource\":\"*\",\"Condition\":{\"Null\":{\"aws:ResourceTag/elbv2.k8s.aws/cluster\":\"false\"}}},{\"Effect\":\"Allow\",\"Action\":[\"elasticloadbalancing:CreateTargetGroup\",\"elasticloadbalancing:CreateLoadBalancer\"],\"Resource\":\"*\",\"Condition\":{\"Null\":{\"aws:RequestTag/elbv2.k8s.aws/cluster\":\"false\"}}},{\"Effect\":\"Allow\",\"Action\":[\"elasticloadbalancing:DeleteRule\",\"elasticloadbalancing:DeleteListener\",\"elasticloadbalancing:CreateRule\",\"elasticloadbalancing:CreateListener\"],\"Resource\":\"*\"},{\"Effect\":\"Allow\",\"Action\":[\"elasticloadbalancing:RemoveTags\",\"elasticloadbalancing:AddTags\"],\"Resource\":[\"arn:aws:elasticloadbalancing:*:*:targetgroup/*/*\",\"arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*\",\"arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*\"],\"Condition\":{\"Null\":{\"aws:RequestTag/elbv2.k8s.aws/cluster\":\"true\",\"aws:ResourceTag/elbv2.k8s.aws/cluster\":\"false\"}}},{\"Effect\":\"Allow\",\"Action\":[\"elasticloadbalancing:RemoveTags\",\"elasticloadbalancing:AddTags\"],\"Resource\":[\"arn:aws:elasticloadbalancing:*:*:listener/net/*/*/*\",\"arn:aws:elasticloadbalancing:*:*:listener/app/*/*/*\",\"arn:aws:elasticloadbalancing:*:*:listener-rule/net/*/*/*\",\"arn:aws:elasticloadbalancing:*:*:listener-rule/app/*/*/*\"]},{\"Effect\":\"Allow\",\"Action\":[\"elasticloadbalancing:SetSubnets\",\"elasticloadbalancing:SetSecurityGroups\",\"elasticloadbalancing:SetIpAddressType\",\"elasticloadbalancing:ModifyTargetGroupAttributes\",\"elasticloadbalancing:ModifyTargetGroup\",\"elasticloadbalancing:ModifyLoadBalancerAttributes\",\"elasticloadbalancing:ModifyListenerAttributes\",\"elasticloadbalancing:ModifyIpPools\",\"elasticloadbalancing:ModifyCapacityReservation\",\"elasticloadbalancing:DeleteTargetGroup\",\"elasticloadbalancing:DeleteLoadBalancer\"],\"Resource\":\"*\",\"Condition\":{\"Null\":{\"aws:ResourceTag/elbv2.k8s.aws/cluster\":\"false\"}}},{\"Effect\":\"Allow\",\"Action\":\"elasticloadbalancing:AddTags\",\"Resource\":[\"arn:aws:elasticloadbalancing:*:*:targetgroup/*/*\",\"arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*\",\"arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*\"],\"Condition\":{\"Null\":{\"aws:RequestTag/elbv2.k8s.aws/cluster\":\"false\"},\"StringEquals\":{\"elasticloadbalancing:CreateAction\":[\"CreateTargetGroup\",\"CreateLoadBalancer\"]}}},{\"Effect\":\"Allow\",\"Action\":[\"elasticloadbalancing:RegisterTargets\",\"elasticloadbalancing:DeregisterTargets\"],\"Resource\":\"arn:aws:elasticloadbalancing:*:*:targetgroup/*/*\"},{\"Effect\":\"Allow\",\"Action\":[\"elasticloadbalancing:SetWebAcl\",\"elasticloadbalancing:SetRulePriorities\",\"elasticloadbalancing:RemoveListenerCertificates\",\"elasticloadbalancing:ModifyRule\",\"elasticloadbalancing:ModifyListener\",\"elasticloadbalancing:AddListenerCertificates\"],\"Resource\":\"*\"}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "iam:CreateServiceLinkedRole"
+                ],
+                "condition": [
+                  {
+                    "test": "StringEquals",
+                    "values": [
+                      "elasticloadbalancing.amazonaws.com"
+                    ],
+                    "variable": "iam:AWSServiceName"
+                  }
+                ],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "ec2:DescribeAccountAttributes",
+                  "ec2:DescribeAddresses",
+                  "ec2:DescribeAvailabilityZones",
+                  "ec2:DescribeCoipPools",
+                  "ec2:DescribeInstances",
+                  "ec2:DescribeInternetGateways",
+                  "ec2:DescribeIpamPools",
+                  "ec2:DescribeNetworkInterfaces",
+                  "ec2:DescribeRouteTables",
+                  "ec2:DescribeSecurityGroups",
+                  "ec2:DescribeSubnets",
+                  "ec2:DescribeTags",
+                  "ec2:DescribeVpcPeeringConnections",
+                  "ec2:DescribeVpcs",
+                  "ec2:GetCoipPoolUsage",
+                  "ec2:GetSecurityGroupsForVpc",
+                  "elasticloadbalancing:DescribeCapacityReservation",
+                  "elasticloadbalancing:DescribeListenerAttributes",
+                  "elasticloadbalancing:DescribeListenerCertificates",
+                  "elasticloadbalancing:DescribeListeners",
+                  "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                  "elasticloadbalancing:DescribeLoadBalancers",
+                  "elasticloadbalancing:DescribeRules",
+                  "elasticloadbalancing:DescribeSSLPolicies",
+                  "elasticloadbalancing:DescribeTags",
+                  "elasticloadbalancing:DescribeTargetGroupAttributes",
+                  "elasticloadbalancing:DescribeTargetGroups",
+                  "elasticloadbalancing:DescribeTargetHealth",
+                  "elasticloadbalancing:DescribeTrustStores"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "acm:DescribeCertificate",
+                  "acm:ListCertificates",
+                  "cognito-idp:DescribeUserPoolClient",
+                  "iam:GetServerCertificate",
+                  "iam:ListServerCertificates",
+                  "shield:CreateProtection",
+                  "shield:DeleteProtection",
+                  "shield:DescribeProtection",
+                  "shield:GetSubscriptionState",
+                  "waf-regional:AssociateWebACL",
+                  "waf-regional:DisassociateWebACL",
+                  "waf-regional:GetWebACL",
+                  "waf-regional:GetWebACLForResource",
+                  "wafv2:AssociateWebACL",
+                  "wafv2:DisassociateWebACL",
+                  "wafv2:GetWebACL",
+                  "wafv2:GetWebACLForResource"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "ec2:AuthorizeSecurityGroupIngress",
+                  "ec2:RevokeSecurityGroupIngress"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "ec2:CreateSecurityGroup"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "ec2:CreateTags"
+                ],
+                "condition": [
+                  {
+                    "test": "Null",
+                    "values": [
+                      "false"
+                    ],
+                    "variable": "aws:RequestTag/elbv2.k8s.aws/cluster"
+                  },
+                  {
+                    "test": "StringEquals",
+                    "values": [
+                      "CreateSecurityGroup"
+                    ],
+                    "variable": "ec2:CreateAction"
+                  }
+                ],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:ec2:*:*:security-group/*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "ec2:CreateTags",
+                  "ec2:DeleteTags"
+                ],
+                "condition": [
+                  {
+                    "test": "Null",
+                    "values": [
+                      "false"
+                    ],
+                    "variable": "aws:ResourceTag/elbv2.k8s.aws/cluster"
+                  },
+                  {
+                    "test": "Null",
+                    "values": [
+                      "true"
+                    ],
+                    "variable": "aws:RequestTag/elbv2.k8s.aws/cluster"
+                  }
+                ],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:ec2:*:*:security-group/*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "ec2:AuthorizeSecurityGroupIngress",
+                  "ec2:DeleteSecurityGroup",
+                  "ec2:RevokeSecurityGroupIngress"
+                ],
+                "condition": [
+                  {
+                    "test": "Null",
+                    "values": [
+                      "false"
+                    ],
+                    "variable": "aws:ResourceTag/elbv2.k8s.aws/cluster"
+                  }
+                ],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "elasticloadbalancing:CreateLoadBalancer",
+                  "elasticloadbalancing:CreateTargetGroup"
+                ],
+                "condition": [
+                  {
+                    "test": "Null",
+                    "values": [
+                      "false"
+                    ],
+                    "variable": "aws:RequestTag/elbv2.k8s.aws/cluster"
+                  }
+                ],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "elasticloadbalancing:CreateListener",
+                  "elasticloadbalancing:CreateRule",
+                  "elasticloadbalancing:DeleteListener",
+                  "elasticloadbalancing:DeleteRule"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "elasticloadbalancing:AddTags",
+                  "elasticloadbalancing:RemoveTags"
+                ],
+                "condition": [
+                  {
+                    "test": "Null",
+                    "values": [
+                      "false"
+                    ],
+                    "variable": "aws:ResourceTag/elbv2.k8s.aws/cluster"
+                  },
+                  {
+                    "test": "Null",
+                    "values": [
+                      "true"
+                    ],
+                    "variable": "aws:RequestTag/elbv2.k8s.aws/cluster"
+                  }
+                ],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*",
+                  "arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*",
+                  "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "elasticloadbalancing:AddTags",
+                  "elasticloadbalancing:RemoveTags"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:elasticloadbalancing:*:*:listener-rule/app/*/*/*",
+                  "arn:aws:elasticloadbalancing:*:*:listener-rule/net/*/*/*",
+                  "arn:aws:elasticloadbalancing:*:*:listener/app/*/*/*",
+                  "arn:aws:elasticloadbalancing:*:*:listener/net/*/*/*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "elasticloadbalancing:DeleteLoadBalancer",
+                  "elasticloadbalancing:DeleteTargetGroup",
+                  "elasticloadbalancing:ModifyCapacityReservation",
+                  "elasticloadbalancing:ModifyIpPools",
+                  "elasticloadbalancing:ModifyListenerAttributes",
+                  "elasticloadbalancing:ModifyLoadBalancerAttributes",
+                  "elasticloadbalancing:ModifyTargetGroup",
+                  "elasticloadbalancing:ModifyTargetGroupAttributes",
+                  "elasticloadbalancing:SetIpAddressType",
+                  "elasticloadbalancing:SetSecurityGroups",
+                  "elasticloadbalancing:SetSubnets"
+                ],
+                "condition": [
+                  {
+                    "test": "Null",
+                    "values": [
+                      "false"
+                    ],
+                    "variable": "aws:ResourceTag/elbv2.k8s.aws/cluster"
+                  }
+                ],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "elasticloadbalancing:AddTags"
+                ],
+                "condition": [
+                  {
+                    "test": "Null",
+                    "values": [
+                      "false"
+                    ],
+                    "variable": "aws:RequestTag/elbv2.k8s.aws/cluster"
+                  },
+                  {
+                    "test": "StringEquals",
+                    "values": [
+                      "CreateTargetGroup",
+                      "CreateLoadBalancer"
+                    ],
+                    "variable": "elasticloadbalancing:CreateAction"
+                  }
+                ],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*",
+                  "arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*",
+                  "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "elasticloadbalancing:DeregisterTargets",
+                  "elasticloadbalancing:RegisterTargets"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"
+                ],
+                "sid": ""
+              },
+              {
+                "actions": [
+                  "elasticloadbalancing:AddListenerCertificates",
+                  "elasticloadbalancing:ModifyListener",
+                  "elasticloadbalancing:ModifyRule",
+                  "elasticloadbalancing:RemoveListenerCertificates",
+                  "elasticloadbalancing:SetRulePriorities",
+                  "elasticloadbalancing:SetWebAcl"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "*"
+                ],
+                "sid": ""
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.lb_role",
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "210958160",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRoleWithWebIdentity\",\n      \"Principal\": {\n        \"Federated\": \"arn:aws:iam::323928186444:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF\"\n      },\n      \"Condition\": {\n        \"StringEquals\": {\n          \"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:aud\": \"sts.amazonaws.com\",\n          \"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:sub\": \"system:serviceaccount:kube-system:aws-load-balancer-controller\"\n        }\n      }\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"sts:AssumeRoleWithWebIdentity\",\"Principal\":{\"Federated\":\"arn:aws:iam::323928186444:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF\"},\"Condition\":{\"StringEquals\":{\"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:aud\":\"sts.amazonaws.com\",\"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:sub\":\"system:serviceaccount:kube-system:aws-load-balancer-controller\"}}}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "sts:AssumeRoleWithWebIdentity"
+                ],
+                "condition": [
+                  {
+                    "test": "StringEquals",
+                    "values": [
+                      "sts.amazonaws.com"
+                    ],
+                    "variable": "oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:aud"
+                  },
+                  {
+                    "test": "StringEquals",
+                    "values": [
+                      "system:serviceaccount:kube-system:aws-load-balancer-controller"
+                    ],
+                    "variable": "oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:sub"
+                  }
+                ],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [
+                  {
+                    "identifiers": [
+                      "arn:aws:iam::323928186444:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF"
+                    ],
+                    "type": "Federated"
+                  }
+                ],
+                "resources": [],
+                "sid": ""
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.lb_role",
+      "mode": "data",
+      "type": "aws_partition",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "dns_suffix": "amazonaws.com",
+            "id": "aws",
+            "partition": "aws",
+            "reverse_dns_prefix": "com.amazonaws"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.lb_role",
+      "mode": "data",
+      "type": "aws_region",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "description": "US East (N. Virginia)",
+            "endpoint": "ec2.us-east-1.amazonaws.com",
+            "id": "us-east-1",
+            "name": "us-east-1"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.lb_role",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "load_balancer_controller",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::323928186444:policy/AmazonEKS_AWS_Load_Balancer_Controller-20260312161321527900000001",
+            "attachment_count": 1,
+            "description": "Provides permissions for AWS Load Balancer Controller addon",
+            "id": "arn:aws:iam::323928186444:policy/AmazonEKS_AWS_Load_Balancer_Controller-20260312161321527900000001",
+            "name": "AmazonEKS_AWS_Load_Balancer_Controller-20260312161321527900000001",
+            "name_prefix": "AmazonEKS_AWS_Load_Balancer_Controller-",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":\"iam:CreateServiceLinkedRole\",\"Condition\":{\"StringEquals\":{\"iam:AWSServiceName\":\"elasticloadbalancing.amazonaws.com\"}},\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"elasticloadbalancing:DescribeTrustStores\",\"elasticloadbalancing:DescribeTargetHealth\",\"elasticloadbalancing:DescribeTargetGroups\",\"elasticloadbalancing:DescribeTargetGroupAttributes\",\"elasticloadbalancing:DescribeTags\",\"elasticloadbalancing:DescribeSSLPolicies\",\"elasticloadbalancing:DescribeRules\",\"elasticloadbalancing:DescribeLoadBalancers\",\"elasticloadbalancing:DescribeLoadBalancerAttributes\",\"elasticloadbalancing:DescribeListeners\",\"elasticloadbalancing:DescribeListenerCertificates\",\"elasticloadbalancing:DescribeListenerAttributes\",\"elasticloadbalancing:DescribeCapacityReservation\",\"ec2:GetSecurityGroupsForVpc\",\"ec2:GetCoipPoolUsage\",\"ec2:DescribeVpcs\",\"ec2:DescribeVpcPeeringConnections\",\"ec2:DescribeTags\",\"ec2:DescribeSubnets\",\"ec2:DescribeSecurityGroups\",\"ec2:DescribeRouteTables\",\"ec2:DescribeNetworkInterfaces\",\"ec2:DescribeIpamPools\",\"ec2:DescribeInternetGateways\",\"ec2:DescribeInstances\",\"ec2:DescribeCoipPools\",\"ec2:DescribeAvailabilityZones\",\"ec2:DescribeAddresses\",\"ec2:DescribeAccountAttributes\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"wafv2:GetWebACLForResource\",\"wafv2:GetWebACL\",\"wafv2:DisassociateWebACL\",\"wafv2:AssociateWebACL\",\"waf-regional:GetWebACLForResource\",\"waf-regional:GetWebACL\",\"waf-regional:DisassociateWebACL\",\"waf-regional:AssociateWebACL\",\"shield:GetSubscriptionState\",\"shield:DescribeProtection\",\"shield:DeleteProtection\",\"shield:CreateProtection\",\"iam:ListServerCertificates\",\"iam:GetServerCertificate\",\"cognito-idp:DescribeUserPoolClient\",\"acm:ListCertificates\",\"acm:DescribeCertificate\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"ec2:RevokeSecurityGroupIngress\",\"ec2:AuthorizeSecurityGroupIngress\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":\"ec2:CreateSecurityGroup\",\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":\"ec2:CreateTags\",\"Condition\":{\"Null\":{\"aws:RequestTag/elbv2.k8s.aws/cluster\":\"false\"},\"StringEquals\":{\"ec2:CreateAction\":\"CreateSecurityGroup\"}},\"Effect\":\"Allow\",\"Resource\":\"arn:aws:ec2:*:*:security-group/*\"},{\"Action\":[\"ec2:DeleteTags\",\"ec2:CreateTags\"],\"Condition\":{\"Null\":{\"aws:RequestTag/elbv2.k8s.aws/cluster\":\"true\",\"aws:ResourceTag/elbv2.k8s.aws/cluster\":\"false\"}},\"Effect\":\"Allow\",\"Resource\":\"arn:aws:ec2:*:*:security-group/*\"},{\"Action\":[\"ec2:RevokeSecurityGroupIngress\",\"ec2:DeleteSecurityGroup\",\"ec2:AuthorizeSecurityGroupIngress\"],\"Condition\":{\"Null\":{\"aws:ResourceTag/elbv2.k8s.aws/cluster\":\"false\"}},\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"elasticloadbalancing:CreateTargetGroup\",\"elasticloadbalancing:CreateLoadBalancer\"],\"Condition\":{\"Null\":{\"aws:RequestTag/elbv2.k8s.aws/cluster\":\"false\"}},\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"elasticloadbalancing:DeleteRule\",\"elasticloadbalancing:DeleteListener\",\"elasticloadbalancing:CreateRule\",\"elasticloadbalancing:CreateListener\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"elasticloadbalancing:RemoveTags\",\"elasticloadbalancing:AddTags\"],\"Condition\":{\"Null\":{\"aws:RequestTag/elbv2.k8s.aws/cluster\":\"true\",\"aws:ResourceTag/elbv2.k8s.aws/cluster\":\"false\"}},\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:elasticloadbalancing:*:*:targetgroup/*/*\",\"arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*\",\"arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*\"]},{\"Action\":[\"elasticloadbalancing:RemoveTags\",\"elasticloadbalancing:AddTags\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:elasticloadbalancing:*:*:listener/net/*/*/*\",\"arn:aws:elasticloadbalancing:*:*:listener/app/*/*/*\",\"arn:aws:elasticloadbalancing:*:*:listener-rule/net/*/*/*\",\"arn:aws:elasticloadbalancing:*:*:listener-rule/app/*/*/*\"]},{\"Action\":[\"elasticloadbalancing:SetSubnets\",\"elasticloadbalancing:SetSecurityGroups\",\"elasticloadbalancing:SetIpAddressType\",\"elasticloadbalancing:ModifyTargetGroupAttributes\",\"elasticloadbalancing:ModifyTargetGroup\",\"elasticloadbalancing:ModifyLoadBalancerAttributes\",\"elasticloadbalancing:ModifyListenerAttributes\",\"elasticloadbalancing:ModifyIpPools\",\"elasticloadbalancing:ModifyCapacityReservation\",\"elasticloadbalancing:DeleteTargetGroup\",\"elasticloadbalancing:DeleteLoadBalancer\"],\"Condition\":{\"Null\":{\"aws:ResourceTag/elbv2.k8s.aws/cluster\":\"false\"}},\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":\"elasticloadbalancing:AddTags\",\"Condition\":{\"Null\":{\"aws:RequestTag/elbv2.k8s.aws/cluster\":\"false\"},\"StringEquals\":{\"elasticloadbalancing:CreateAction\":[\"CreateTargetGroup\",\"CreateLoadBalancer\"]}},\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:elasticloadbalancing:*:*:targetgroup/*/*\",\"arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*\",\"arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*\"]},{\"Action\":[\"elasticloadbalancing:RegisterTargets\",\"elasticloadbalancing:DeregisterTargets\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:elasticloadbalancing:*:*:targetgroup/*/*\"},{\"Action\":[\"elasticloadbalancing:SetWebAcl\",\"elasticloadbalancing:SetRulePriorities\",\"elasticloadbalancing:RemoveListenerCertificates\",\"elasticloadbalancing:ModifyRule\",\"elasticloadbalancing:ModifyListener\",\"elasticloadbalancing:AddListenerCertificates\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAUW2473ZGATWIUQT43",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.lb_role.data.aws_iam_policy_document.load_balancer_controller",
+            "module.lb_role.data.aws_partition.current"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.lb_role",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::323928186444:role/prod-eks-cluster-lb-controller",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRoleWithWebIdentity\",\"Condition\":{\"StringEquals\":{\"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:aud\":\"sts.amazonaws.com\",\"oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF:sub\":\"system:serviceaccount:kube-system:aws-load-balancer-controller\"}},\"Effect\":\"Allow\",\"Principal\":{\"Federated\":\"arn:aws:iam::323928186444:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/5816F229F450042D2224CBD1EEA21CCF\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2026-03-12T20:22:55Z",
+            "description": "",
+            "force_detach_policies": true,
+            "id": "prod-eks-cluster-lb-controller",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::323928186444:policy/AmazonEKS_AWS_Load_Balancer_Controller-20260312161321527900000001"
+            ],
+            "max_session_duration": 3600,
+            "name": "prod-eks-cluster-lb-controller",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROAUW2473ZGN3KDNX6G7"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "data.terraform_remote_state.cluster",
+            "module.lb_role.data.aws_caller_identity.current",
+            "module.lb_role.data.aws_iam_policy_document.this",
+            "module.lb_role.data.aws_partition.current"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.lb_role",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "load_balancer_controller",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "prod-eks-cluster-lb-controller-20260312202256190400000001",
+            "policy_arn": "arn:aws:iam::323928186444:policy/AmazonEKS_AWS_Load_Balancer_Controller-20260312161321527900000001",
+            "role": "prod-eks-cluster-lb-controller"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "data.terraform_remote_state.cluster",
+            "module.lb_role.aws_iam_policy.load_balancer_controller",
+            "module.lb_role.aws_iam_role.this",
+            "module.lb_role.data.aws_caller_identity.current",
+            "module.lb_role.data.aws_iam_policy_document.load_balancer_controller",
+            "module.lb_role.data.aws_iam_policy_document.this",
+            "module.lb_role.data.aws_partition.current"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.s3_uploads",
+      "mode": "data",
+      "type": "aws_caller_identity",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "323928186444",
+            "arn": "arn:aws:iam::323928186444:user/benaziz",
+            "id": "323928186444",
+            "user_id": "AIDAUW2473ZGN6AVFT7QT"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.s3_uploads",
+      "mode": "data",
+      "type": "aws_canonical_user_id",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "display_name": "",
+            "id": "c9d0cd19299d50bdc05ed4805579c6b9946615e848f4f26a467d41c118b85f45"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.s3_uploads",
+      "mode": "data",
+      "type": "aws_partition",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "dns_suffix": "amazonaws.com",
+            "id": "aws",
+            "partition": "aws",
+            "reverse_dns_prefix": "com.amazonaws"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.s3_uploads",
+      "mode": "data",
+      "type": "aws_region",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "description": "US East (N. Virginia)",
+            "endpoint": "ec2.us-east-1.amazonaws.com",
+            "id": "us-east-1",
+            "name": "us-east-1"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.s3_uploads",
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": null,
+            "arn": "arn:aws:s3:::prod-eks-cluster-aws-s3-uploads-bucket",
+            "bucket": "prod-eks-cluster-aws-s3-uploads-bucket",
+            "bucket_domain_name": "prod-eks-cluster-aws-s3-uploads-bucket.s3.amazonaws.com",
+            "bucket_prefix": "",
+            "bucket_regional_domain_name": "prod-eks-cluster-aws-s3-uploads-bucket.s3.us-east-1.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": false,
+            "grant": [
+              {
+                "id": "c9d0cd19299d50bdc05ed4805579c6b9946615e848f4f26a467d41c118b85f45",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z3AQBSTGFYJSTF",
+            "id": "prod-eks-cluster-aws-s3-uploads-bucket",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": [],
+            "object_lock_enabled": false,
+            "policy": "",
+            "region": "us-east-1",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": true,
+                "mfa_delete": false
+              }
+            ],
+            "website": [],
+            "website_domain": null,
+            "website_endpoint": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
+        }
+      ]
+    },
+    {
+      "module": "module.s3_uploads",
+      "mode": "managed",
+      "type": "aws_s3_bucket_acl",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "access_control_policy": [
+              {
+                "grant": [
+                  {
+                    "grantee": [
+                      {
+                        "display_name": "",
+                        "email_address": "",
+                        "id": "c9d0cd19299d50bdc05ed4805579c6b9946615e848f4f26a467d41c118b85f45",
+                        "type": "CanonicalUser",
+                        "uri": ""
+                      }
+                    ],
+                    "permission": "FULL_CONTROL"
+                  }
+                ],
+                "owner": [
+                  {
+                    "display_name": "",
+                    "id": "c9d0cd19299d50bdc05ed4805579c6b9946615e848f4f26a467d41c118b85f45"
+                  }
+                ]
+              }
+            ],
+            "acl": "private",
+            "bucket": "prod-eks-cluster-aws-s3-uploads-bucket",
+            "expected_bucket_owner": "",
+            "id": "prod-eks-cluster-aws-s3-uploads-bucket,private"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.s3_uploads.aws_s3_bucket.this",
+            "module.s3_uploads.aws_s3_bucket_ownership_controls.this",
+            "module.s3_uploads.aws_s3_bucket_policy.this",
+            "module.s3_uploads.aws_s3_bucket_public_access_block.this",
+            "module.s3_uploads.data.aws_caller_identity.current",
+            "module.s3_uploads.data.aws_canonical_user_id.this",
+            "module.s3_uploads.data.aws_iam_policy_document.access_log_delivery",
+            "module.s3_uploads.data.aws_iam_policy_document.combined",
+            "module.s3_uploads.data.aws_iam_policy_document.deny_incorrect_encryption_headers",
+            "module.s3_uploads.data.aws_iam_policy_document.deny_incorrect_kms_key_sse",
+            "module.s3_uploads.data.aws_iam_policy_document.deny_insecure_transport",
+            "module.s3_uploads.data.aws_iam_policy_document.deny_unencrypted_object_uploads",
+            "module.s3_uploads.data.aws_iam_policy_document.elb_log_delivery",
+            "module.s3_uploads.data.aws_iam_policy_document.inventory_and_analytics_destination_policy",
+            "module.s3_uploads.data.aws_iam_policy_document.lb_log_delivery",
+            "module.s3_uploads.data.aws_iam_policy_document.require_latest_tls",
+            "module.s3_uploads.data.aws_partition.current",
+            "module.s3_uploads.data.aws_region.current"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.s3_uploads",
+      "mode": "managed",
+      "type": "aws_s3_bucket_ownership_controls",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "prod-eks-cluster-aws-s3-uploads-bucket",
+            "id": "prod-eks-cluster-aws-s3-uploads-bucket",
+            "rule": [
+              {
+                "object_ownership": "ObjectWriter"
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.s3_uploads.aws_s3_bucket.this",
+            "module.s3_uploads.aws_s3_bucket_policy.this",
+            "module.s3_uploads.aws_s3_bucket_public_access_block.this",
+            "module.s3_uploads.data.aws_caller_identity.current",
+            "module.s3_uploads.data.aws_iam_policy_document.access_log_delivery",
+            "module.s3_uploads.data.aws_iam_policy_document.combined",
+            "module.s3_uploads.data.aws_iam_policy_document.deny_incorrect_encryption_headers",
+            "module.s3_uploads.data.aws_iam_policy_document.deny_incorrect_kms_key_sse",
+            "module.s3_uploads.data.aws_iam_policy_document.deny_insecure_transport",
+            "module.s3_uploads.data.aws_iam_policy_document.deny_unencrypted_object_uploads",
+            "module.s3_uploads.data.aws_iam_policy_document.elb_log_delivery",
+            "module.s3_uploads.data.aws_iam_policy_document.inventory_and_analytics_destination_policy",
+            "module.s3_uploads.data.aws_iam_policy_document.lb_log_delivery",
+            "module.s3_uploads.data.aws_iam_policy_document.require_latest_tls",
+            "module.s3_uploads.data.aws_partition.current",
+            "module.s3_uploads.data.aws_region.current"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.s3_uploads",
+      "mode": "managed",
+      "type": "aws_s3_bucket_public_access_block",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "block_public_acls": true,
+            "block_public_policy": true,
+            "bucket": "prod-eks-cluster-aws-s3-uploads-bucket",
+            "id": "prod-eks-cluster-aws-s3-uploads-bucket",
+            "ignore_public_acls": true,
+            "restrict_public_buckets": true
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.s3_uploads.aws_s3_bucket.this"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.s3_uploads",
+      "mode": "managed",
+      "type": "aws_s3_bucket_versioning",
+      "name": "this",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "prod-eks-cluster-aws-s3-uploads-bucket",
+            "expected_bucket_owner": "",
+            "id": "prod-eks-cluster-aws-s3-uploads-bucket",
+            "mfa": null,
+            "versioning_configuration": [
+              {
+                "mfa_delete": "",
+                "status": "Enabled"
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.s3_uploads.aws_s3_bucket.this"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

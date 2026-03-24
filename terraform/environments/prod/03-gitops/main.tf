@@ -96,11 +96,13 @@ module "lb_role" {
 }
 
 # S3 and ECR (Data resources)
+data "aws_caller_identity" "current" {}
+
 module "s3_uploads" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "~> 3.0"
 
-  bucket = "${var.cluster_name}-aws-s3-uploads-bucket"
+  bucket = "${var.cluster_name}-uploads-${data.aws_caller_identity.current.account_id}"
   acl    = "private"
 
   control_object_ownership = true

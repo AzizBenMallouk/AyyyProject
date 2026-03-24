@@ -17,11 +17,12 @@ module "eks" {
     main = {
       min_size     = 0
       max_size     = 5
-      desired_size = 3
+      desired_size = 2
 
       ami_type       = "AL2023_ARM_64_STANDARD"
       instance_types = ["t4g.small"]
-      capacity_type  = "ON_DEMAND"
+      # capacity_type  = "ON_DEMAND"
+      capacity_type  = "SPOT"
     }
   }
 

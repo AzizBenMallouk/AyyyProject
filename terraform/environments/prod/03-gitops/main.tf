@@ -119,7 +119,7 @@ module "ecr_frontend" {
   version = "~> 1.6"
 
   repository_name = "app-frontend-prod"
-  repository_image_tag_mutability = "IMMUTABLE"
+  repository_image_tag_mutability = "MUTABLE"
   repository_lifecycle_policy = jsonencode({
     rules = [
       {
@@ -143,7 +143,7 @@ module "ecr_backend" {
   version = "~> 1.6"
 
   repository_name = "app-backend-prod"
-  repository_image_tag_mutability = "IMMUTABLE"
+  repository_image_tag_mutability = "MUTABLE"
   repository_lifecycle_policy = jsonencode({
     rules = [
       {

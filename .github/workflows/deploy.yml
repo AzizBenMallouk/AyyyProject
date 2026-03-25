@@ -70,7 +70,7 @@ jobs:
           context: ./app-frontend
           push: true
           platforms: linux/arm64
-          tags: ${{ steps.login-ecr.outputs.registry }}/app-frontend-prod:${{ github.sha }}
+          tags: ${{ steps.login-ecr.outputs.registry }}/app-frontend-prod:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -81,7 +81,7 @@ jobs:
           context: ./app-backend
           push: true
           platforms: linux/arm64
-          tags: ${{ steps.login-ecr.outputs.registry }}/app-backend-prod:${{ github.sha }}
+          tags: ${{ steps.login-ecr.outputs.registry }}/app-backend-prod:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -109,10 +109,10 @@ jobs:
         run: |
           cd gitops/overlays/prod
           if [ "${{ needs.filter.outputs.frontend }}" == "true" ]; then
-            kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/app-frontend-prod=${{ steps.login-ecr.outputs.registry }}/app-frontend-prod:${{ github.sha }}
+            kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/app-frontend-prod=${{ steps.login-ecr.outputs.registry }}/app-frontend-prod:latest
           fi
           if [ "${{ needs.filter.outputs.backend }}" == "true" ]; then
-            kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/app-backend-prod=${{ steps.login-ecr.outputs.registry }}/app-backend-prod:${{ github.sha }}
+            kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/app-backend-prod=${{ steps.login-ecr.outputs.registry }}/app-backend-prod:latest
           fi
 
       - name: Commit and push changes
@@ -120,7 +120,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add gitops/overlays/prod/kustomization.yaml
-          git commit -m "chore: update image tags to ${{ github.sha }} [skip ci]" || echo "No changes to commit"
+          git commit -m "chore: deploy latest images [skip ci]" || echo "No changes to commit"
           git push
 
       - name: Post preview review instructions

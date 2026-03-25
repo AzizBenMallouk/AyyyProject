@@ -10,8 +10,8 @@ variable "cluster_name" {
   default     = "prod-eks-cluster"
 }
 
-variable "huggingface_token" {
-  description = "HuggingFace API token for AI email generation (sensitive)"
+variable "gemini_api_key" {
+  description = "Google Gemini API key for AI email generation (sensitive)"
   type        = string
   sensitive   = true
 }

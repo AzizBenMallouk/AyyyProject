@@ -21,8 +21,8 @@ module "eks" {
 
       ami_type       = "AL2023_ARM_64_STANDARD"
       instance_types = ["t4g.small"]
-      # capacity_type  = "ON_DEMAND"
-      capacity_type  = "SPOT"
+      capacity_type  = "ON_DEMAND"
+      # capacity_type  = "SPOT"
     }
   }
 
@@ -69,7 +69,10 @@ module "github_oidc_role" {
   role_policy_arns = ["arn:aws:iam::aws:policy/AdministratorAccess"]
 
   oidc_fully_qualified_subjects = [
-    "repo:AzizBenMallouk/AyyyProject:ref:refs/heads/main"
+    # Branch-based jobs (build, deploy, notify)
+    "repo:AzizBenMallouk/AyyyProject:ref:refs/heads/main",
+    # Environment-based jobs (promote uses environment:production)
+    # "repo:AzizBenMallouk/AyyyProject:environment:production"
   ]
 }
 

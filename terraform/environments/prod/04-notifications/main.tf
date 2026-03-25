@@ -36,14 +36,14 @@ resource "aws_sns_topic_subscription" "initial_subscribers" {
 # ============================================================
 # Secrets Manager — HuggingFace API Token
 # ============================================================
-resource "aws_secretsmanager_secret" "hf_token" {
-  name                    = "${var.cluster_name}/huggingface-api-token"
-  recovery_window_in_days = 0 # Instant delete for dev convenience
+resource "aws_secretsmanager_secret" "gemini_api_key" {
+  name                    = "${var.cluster_name}/gemini-api-key"
+  recovery_window_in_days = 0
 }
 
-resource "aws_secretsmanager_secret_version" "hf_token" {
-  secret_id     = aws_secretsmanager_secret.hf_token.id
-  secret_string = var.huggingface_token
+resource "aws_secretsmanager_secret_version" "gemini_api_key" {
+  secret_id     = aws_secretsmanager_secret.gemini_api_key.id
+  secret_string = var.gemini_api_key
 }
 
 # ============================================================
@@ -91,7 +91,7 @@ resource "aws_iam_role_policy" "feature_notifier" {
         Sid    = "SecretsRead"
         Effect = "Allow"
         Action = ["secretsmanager:GetSecretValue"]
-        Resource = aws_secretsmanager_secret.hf_token.arn
+        Resource = aws_secretsmanager_secret.gemini_api_key.arn
       },
       {
         Sid    = "CloudWatchLogs"
@@ -129,9 +129,9 @@ resource "aws_lambda_function" "feature_notifier" {
 
   environment {
     variables = {
-      SNS_TOPIC_ARN    = aws_sns_topic.feature_updates.arn
-      HF_SECRET_NAME   = aws_secretsmanager_secret.hf_token.name
-      AWS_REGION_NAME  = var.region
+      SNS_TOPIC_ARN      = aws_sns_topic.feature_updates.arn
+      GEMINI_SECRET_NAME = aws_secretsmanager_secret.gemini_api_key.name
+      AWS_REGION_NAME    = var.region
     }
   }
 }

@@ -23,6 +23,11 @@ module "eks" {
       instance_types = ["t4g.small"]
       capacity_type  = "ON_DEMAND"
       # capacity_type  = "SPOT"
+
+      # Allow nodes to pull images from ECR
+      iam_role_additional_policies = {
+        ecr = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      }
     }
   }
 
@@ -43,6 +48,18 @@ module "eks" {
     }
     coredns = {}
   }
+
+  # Grant GitHub Actions OIDC role kubectl access
+  manage_aws_auth_configmap = true
+  aws_auth_roles = [
+    {
+      rolearn  = module.github_oidc_role.iam_role_arn
+      username = "github-actions"
+      groups   = ["system:masters"]
+    }
+  ]
+
+  depends_on = [module.github_oidc_role]
 }
 
 # GitHub Actions OIDC
@@ -72,7 +89,7 @@ module "github_oidc_role" {
     # Branch-based jobs (build, deploy, notify)
     "repo:AzizBenMallouk/AyyyProject:ref:refs/heads/main",
     # Environment-based jobs (promote uses environment:production)
-    # "repo:AzizBenMallouk/AyyyProject:environment:production"
+    "repo:AzizBenMallouk/AyyyProject:environment:production"
   ]
 }
 

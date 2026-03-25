@@ -108,37 +108,12 @@ resource "aws_iam_role_policy" "feature_notifier" {
 }
 
 # ============================================================
-# Lambda Function Package (with dependencies)
+# Lambda Function Package (no external deps — stdlib + boto3 only)
 # ============================================================
-locals {
-  src_dir   = "${path.root}/../../../../app-notifications-worker"
-  build_dir = "${path.module}/.lambda-build"
-  zip_path  = "${path.module}/feature_notifier.zip"
-}
-
-# Install Python dependencies into a staging directory before zipping
-resource "null_resource" "lambda_build" {
-  triggers = {
-    requirements = filesha256("${local.src_dir}/requirements.txt")
-    handler      = filesha256("${local.src_dir}/handler.py")
-  }
-
-  provisioner "local-exec" {
-    command = <<-EOT
-      rm -rf ${local.build_dir}
-      mkdir -p ${local.build_dir}
-      cp ${local.src_dir}/handler.py ${local.build_dir}/
-      pip install -r ${local.src_dir}/requirements.txt -t ${local.build_dir}/ --quiet
-    EOT
-  }
-}
-
 data "archive_file" "feature_notifier" {
   type        = "zip"
-  source_dir  = local.build_dir
-  output_path = local.zip_path
-
-  depends_on = [null_resource.lambda_build]
+  source_dir  = "${path.root}/../../../../app-notifications-worker"
+  output_path = "${path.module}/feature_notifier.zip"
 }
 
 resource "aws_lambda_function" "feature_notifier" {

@@ -138,7 +138,6 @@ terraform apply
 - **ArgoCD** (Helm) — GitOps controller, exposed via NLB
 - **Argo Rollouts** (Helm) — Blue/Green deployment controller
 - **AWS Load Balancer Controller** (Helm) — manages ALB/NLB from K8s ingress
-- **Prometheus Stack** (Helm) — Prometheus + Grafana + AlertManager in `monitoring` namespace
 - **ECR Repositories** — `app-frontend-prod` and `app-backend-prod` (IMMUTABLE tags)
 - **S3 Bucket** — for backend file uploads
 - **IRSA Role** — allows the backend pod to access S3 without static credentials
@@ -157,12 +156,6 @@ echo ""
 ```bash
 kubectl get svc argocd-server -n argocd
 # Copy the EXTERNAL-IP and open in browser
-```
-
-### Get Grafana URL
-```bash
-kubectl get svc -n monitoring prometheus-stack-grafana
-# Default credentials: admin / prom-operator
 ```
 
 ---

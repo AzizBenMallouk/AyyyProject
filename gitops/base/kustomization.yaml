@@ -7,4 +7,3 @@ resources:
   - apps/backend/mysql.yaml
   - networking/ingress.yaml
   - monitoring/monitoring.yaml
-  - monitoring/service-monitors.yaml

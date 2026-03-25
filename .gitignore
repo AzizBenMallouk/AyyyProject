@@ -10,6 +10,7 @@ monpass
 **/terraform.tfstate.d/
 **/*.tfplan
 **/feature_notifier.zip
+**/.lambda-build/
 
 # Sensitive var files — never commit secrets
 **/terraform.tfvars

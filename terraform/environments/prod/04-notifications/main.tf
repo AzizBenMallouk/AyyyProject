@@ -129,9 +129,8 @@ resource "aws_lambda_function" "feature_notifier" {
 
   environment {
     variables = {
-      SNS_TOPIC_ARN      = aws_sns_topic.feature_updates.arn
-      GEMINI_SECRET_NAME = aws_secretsmanager_secret.gemini_api_key.name
-      AWS_REGION_NAME    = var.region
+      SNS_TOPIC_ARN   = aws_sns_topic.feature_updates.arn
+      AWS_REGION_NAME = var.region
     }
   }
 }

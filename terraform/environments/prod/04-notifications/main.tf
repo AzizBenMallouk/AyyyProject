@@ -32,7 +32,7 @@ resource "aws_sns_topic_subscription" "initial_subscribers" {
   protocol  = "email"
   endpoint  = each.value
 }
-
+/*
 # ============================================================
 # Secrets Manager — HuggingFace API Token
 # ============================================================
@@ -45,6 +45,7 @@ resource "aws_secretsmanager_secret_version" "gemini_api_key" {
   secret_id     = aws_secretsmanager_secret.gemini_api_key.id
   secret_string = var.gemini_api_key
 }
+*/
 
 # ============================================================
 # IAM Role for Lambda
